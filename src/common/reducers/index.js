@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux';
-import counter from './counter';
+import {combineReducers} from "redux"
+//import auth from './auth'
+import paymentSystems from './paymentSystems'
+import exchangeInfo from './exchangeInfo'
+import transaction from './transaction'
 
-const rootReducer = combineReducers({
-  counter,
-});
-
-export default rootReducer;
+export default combineReducers({
+	//system: auth,
+	paymentSystems,
+	exchangeInfo,
+	transaction
+})

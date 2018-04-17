@@ -1,14 +1,16 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Counter from '../components/Counter';
-import * as CounterActions from '../actions';
+import React, { Component } from 'react';
+import Header from "../components/Layout/Header"
+import Footer from "../components/Layout/Footer"
+import Main from "../components/Layout/Main"
 
-const mapStateToProps = state => ({
-  counter: state.counter,
-});
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
+export default class App extends Component {
+  render() {
+    return (
+		<div>
+			<Header />
+			<Main />
+			<Footer />
+		</div>
+    );
+  }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
