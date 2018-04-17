@@ -10,7 +10,7 @@ export function loadAllPaymentSystems() {
     )
     .then(function (response) {
       const {Data, Errors, Info, Type} = response.data
-        if (Errors.length == 0) {
+        if (Errors.length === 0) {
             dispatch({
                 type: LOAD_ALL_PAYMENT_SYSTEMS + SUCCESS,
                 payload: Data

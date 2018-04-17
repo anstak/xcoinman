@@ -20,7 +20,7 @@ export function getTransactionStatus(id) {
     )
     .then(function (response) {
       const {Data, Errors, Info, Type} = response.data
-        if (Errors.length == 0) {
+        if (Errors.length === 0) {
             dispatch({
                 type: GET_TRANSACTION_STATUS + SUCCESS,
                 payload: Data

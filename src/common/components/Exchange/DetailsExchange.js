@@ -35,8 +35,8 @@ class DetailsExchange extends Component {
 
 		if (loading_pair) return false
 
-       	if (selected_from == this.props.exchangeInfo.selected_from &&
-        	selected_to == this.props.exchangeInfo.selected_to) return false
+       	if (selected_from === this.props.exchangeInfo.selected_from &&
+        	selected_to === this.props.exchangeInfo.selected_to) return false
 
         if (selected_from && selected_to) {
 			var cryptoFrom = paymentSystemsMap[selected_from]

@@ -20,7 +20,7 @@ class PaymentSystems extends Component {
 
     componentDidMount() {
         const {loaded, loading, paymentSystems, loadAllPaymentSystems} = this.props
-        if (!loading && paymentSystems.length == 0) loadAllPaymentSystems()
+        if (!loading && paymentSystems.length === 0) loadAllPaymentSystems()
     }
     
 	render() {

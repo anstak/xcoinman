@@ -37,7 +37,7 @@ class Amount extends Component {
     componentWillReceiveProps(nextProps) {
 		const {exchangeInfo, setAmountCrypto, type} = nextProps
 
-		const antiType = type == "from" ? "to" : "from"
+		const antiType = type === "from" ? "to" : "from"
 
 	    this.setState({
 	      amount: nextProps.exchangeInfo["amount_" + type] || ''
@@ -47,12 +47,12 @@ class Amount extends Component {
 	    
 		if (
 			exchangeInfo.calculatingType &&
-			(type == "to" || exchangeInfo["amount_" + antiType] != this.props.exchangeInfo["amount_" + antiType])
+			(type === "to" || exchangeInfo["amount_" + antiType] !== this.props.exchangeInfo["amount_" + antiType])
 		) {
-			if (exchangeInfo.rate.rate == 0) {
+			if (exchangeInfo.rate.rate === 0) {
 				this.props.setAmountCrypto("0", this.props.type)
 			} else if (exchangeInfo.rate.rate) {
-				if (type == "to") {
+				if (type === "to") {
 					var value = exchangeInfo["amount_" + antiType] * exchangeInfo.rate.rate
 				} else {
 					var value = exchangeInfo["amount_" + antiType] / exchangeInfo.rate.rate
@@ -66,17 +66,17 @@ class Amount extends Component {
     	const {exchangeInfo: {selected_from, selected_to, amount_from, amount_to, rate}} = nextProps
 
         return (
-        	// selected_from != this.props.exchangeInfo.selected_from ||
-        	// selected_to != this.props.exchangeInfo.selected_to ||
-        	amount_from != this.props.exchangeInfo.amount_from ||
-        	amount_to != this.props.exchangeInfo.amount_to ||
-        	(rate && rate.rate != this.props.exchangeInfo.rate.rate )
+        	// selected_from !== this.props.exchangeInfo.selected_from ||
+        	// selected_to !== this.props.exchangeInfo.selected_to ||
+        	amount_from !== this.props.exchangeInfo.amount_from ||
+        	amount_to !== this.props.exchangeInfo.amount_to ||
+        	(rate && rate.rate !== this.props.exchangeInfo.rate.rate )
     	)
     }
 
 	render() {
 		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, type} = this.props
-		var selected_id = type == "from" ? selected_from : selected_to
+		var selected_id = type === "from" ? selected_from : selected_to
 		if (selected_id) {
 			var paymentSystem = paymentSystemsMap[selected_id]
 			var pic = paymentSystem.imageSmall.replace("jpeg", "png")

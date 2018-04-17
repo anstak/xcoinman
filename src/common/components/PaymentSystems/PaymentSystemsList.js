@@ -27,16 +27,16 @@ class PaymentSystemsList extends Component {
     shouldComponentUpdate(nextProps, nextState) {
     	const {loadedPaymentSystems, selected_from, selected_to} = nextProps
 
-        return (selected_from != this.props.selected_from ||
-        	selected_to != this.props.selected_to ||
-        	loadedPaymentSystems != this.props.loadedPaymentSystems
+        return (selected_from !== this.props.selected_from ||
+        	selected_to !== this.props.selected_to ||
+        	loadedPaymentSystems !== this.props.loadedPaymentSystems
     	)
     }
 
     componentWillReceiveProps(nextProps) {
         const {selected, type, loadedPaymentSystems} = nextProps
 
-		if (this.props.selected != nextProps.selected && loadedPaymentSystems) {
+		if (this.props.selected !== nextProps.selected && loadedPaymentSystems) {
 			this.props.toggleActiveCrypto(selected, type)
 		}
     }
@@ -79,14 +79,14 @@ class PaymentSystemsList extends Component {
 	getClassName(paymentSystemID) {
 		const {type} = this.props
 		var classes = ["btn", "btn-link", "border-pretty"]
-		if (paymentSystemID == this.props["selected_" + type]) classes.push("btn-active")
+		if (paymentSystemID === this.props["selected_" + type]) classes.push("btn-active")
 		return classes.join(" ")
 	}
 
 	getDisabled(paymentSystemID) {
 		const {type} = this.props
-		var anti_type = type == "from" ? "to" : "from"
-		return paymentSystemID == this.props["selected_" + anti_type]
+		var anti_type = type === "from" ? "to" : "from"
+		return paymentSystemID === this.props["selected_" + anti_type]
 	}
 }
 

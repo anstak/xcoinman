@@ -26,7 +26,7 @@ export function loadCryptoPair(ratePair) {
     )
     .then(function (response) {
       const {Data, Errors, Info, Type} = response.data
-        if (Errors.length == 0) {
+        if (Errors.length === 0) {
             dispatch({
                 type: LOAD_CRYPTO_PAIR + SUCCESS,
                 payload: Data
@@ -57,7 +57,7 @@ export function createTransaction(transaction) {
     )
     .then(function (response) {
       const {Data, Errors, Info, Type} = response.data
-        if (Errors.length == 0) {
+        if (Errors.length === 0) {
             dispatch({
                 type: CREATE_TRANSACTION + SUCCESS,
                 payload: Data
