@@ -20,7 +20,7 @@ export function loadCryptoPair(ratePair) {
   return dispatch => {
     dispatch({ type: LOAD_CRYPTO_PAIR + START })
 
-    axios.post(
+    return axios.post(
         '/api/CryptoCurrencies/rate',
         querystring.stringify({ratePair})
     )
@@ -51,7 +51,7 @@ export function createTransaction(transaction) {
   return dispatch => {
     dispatch({ type: CREATE_TRANSACTION + START })
 
-    axios.post(
+    return axios.post(
         '/api/CryptoCurrencies/transaction-create',
         querystring.stringify(transaction)
     )
