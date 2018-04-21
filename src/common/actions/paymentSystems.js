@@ -1,15 +1,13 @@
-import axios from 'axios'
+import axios from '../../axios'
 import { LOAD_ALL_PAYMENT_SYSTEMS, START, SUCCESS, FAIL } from '../constants'
 
 export function loadAllPaymentSystems() {
   return dispatch => {
     dispatch({ type: LOAD_ALL_PAYMENT_SYSTEMS + START })
-        console.log(1)
     return axios.post(
         '/api/CryptoCurrencies/list'
     )
     .then(function (response) {
-        console.log(2)
       const {Data, Errors, Info, Type} = response.data
         if (Errors.length === 0) {
             dispatch({

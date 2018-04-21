@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../../axios'
 import { TOGGLE_ACTIVE_CRYPTO, SET_AMOUNT_CRYPTO, LOAD_CRYPTO_PAIR, CREATE_TRANSACTION, START, SUCCESS, FAIL } from '../constants'
 import querystring from 'querystring';
 
@@ -21,7 +21,7 @@ export function loadCryptoPair(ratePair) {
     dispatch({ type: LOAD_CRYPTO_PAIR + START })
 
     return axios.post(
-        '/api/CryptoCurrencies/rate',
+        'http://93.170.131.108/api/CryptoCurrencies/rate',
         querystring.stringify({ratePair})
     )
     .then(function (response) {
@@ -52,7 +52,7 @@ export function createTransaction(transaction) {
     dispatch({ type: CREATE_TRANSACTION + START })
 
     return axios.post(
-        '/api/CryptoCurrencies/transaction-create',
+        'http://93.170.131.108/api/CryptoCurrencies/transaction-create',
         querystring.stringify(transaction)
     )
     .then(function (response) {

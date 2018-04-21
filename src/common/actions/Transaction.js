@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../../axios'
 import { REDIRECT_TO_TRANSACTION_FINISHED, GET_TRANSACTION_STATUS, START, SUCCESS, FAIL } from '../constants'
 import querystring from 'querystring';
 
@@ -15,7 +15,7 @@ export function getTransactionStatus(id) {
     dispatch({ type: GET_TRANSACTION_STATUS + START })
     const params = querystring.stringify({ID: id});
     return axios.post(
-        '/api/CryptoCurrencies/shapeshift-status',
+        'http://93.170.131.108/api/CryptoCurrencies/shapeshift-status',
         params
     )
     .then(function (response) {

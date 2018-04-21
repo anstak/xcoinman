@@ -26,7 +26,6 @@ server
     const promises = [store.dispatch(loadAllPaymentSystems())]
 
     return Promise.all(promises).then((response) => {
-      console.log(3);
       let context = {};
       // Render the component to a string
       const markup = renderToString(
