@@ -1,19 +1,37 @@
-# Razzle and Redux Example
+# exchange
+Cryptocurrency exchange Frontend written with React.js
 
-## How to use
-Download the example [or clone the whole project](https://github.com/jaredpalmer/razzle.git):
+Below is a list of commands you will probably find useful.
 
-```bash
-curl https://codeload.github.com/jaredpalmer/razzle/tar.gz/master | tar -xz --strip=2 razzle-master/examples/with-redux
-cd with-redux
-```
+### `npm start` or `yarn start`
 
-Install it and run:
+Runs the project in development mode.  
+You can view your application at `http://localhost:3000`
 
-```bash
-yarn install
-yarn start
-```
+The page will reload if you make edits.
 
-## Idea behind the example
-Almost 100% of the code is taken from the [official Redux universal example](https://github.com/reactjs/redux/tree/master/examples/universal).
+### `npm run build` or `yarn build`
+
+Builds the app for production to the build folder.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+
+### `npm run start:prod` or `yarn start:prod`
+
+Runs the compiled app in production.
+
+You can again view your application at `http://localhost:3000`
+
+### `npm test` or `yarn test`
+
+Runs the test watcher (Jest) in an interactive mode.
+By default, runs tests related to files changed since the last commit.
+
+### `npm start -- --inspect` or `yarn start -- --inspect`
+
+To debug the node server, you can use `razzle start --inspect`. This will start the node server and enable the inspector agent. For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
+
+### `npm start -- --inspect-brk` or `yarn start -- --inspect-brk`
+
+To debug the node server, you can use `razzle start --inspect-brk`. This will start the node server, enable the inspector agent and Break before user code starts. For more information, see [this](https://nodejs.org/en/docs/guides/debugging-getting-started/).
