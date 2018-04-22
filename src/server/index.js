@@ -17,6 +17,14 @@ const server = express();
 // https://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/
 // https://github.com/wellyshen/react-cool-starter/blob/master/src/server.js
 
+server.get('/*', function(req, res, next) { // redirect from https to http
+  if (typeof req.connection.encrypted === 'undefined' || req.headers.host.match(/^www/) !== null) {
+    res.redirect('https://' + req.headers.host.replace(/^www\./, '') + req.url);
+  } else {
+    next();     
+  }
+})
+
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
