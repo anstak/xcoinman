@@ -12,3 +12,4 @@ public/static
 .env.test.local
 .env.production.local
 /config.js
+/public_html

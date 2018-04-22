@@ -21,7 +21,7 @@ export function loadCryptoPair(ratePair) {
     dispatch({ type: LOAD_CRYPTO_PAIR + START })
 
     return axios.post(
-        'http://93.170.131.108/api/CryptoCurrencies/rate',
+        '/api/CryptoCurrencies/rate',
         querystring.stringify({ratePair})
     )
     .then(function (response) {

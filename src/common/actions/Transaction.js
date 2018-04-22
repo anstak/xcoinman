@@ -15,7 +15,7 @@ export function getTransactionStatus(id) {
     dispatch({ type: GET_TRANSACTION_STATUS + START })
     const params = querystring.stringify({ID: id});
     return axios.post(
-        'http://93.170.131.108/api/CryptoCurrencies/shapeshift-status',
+        '/api/CryptoCurrencies/shapeshift-status',
         params
     )
     .then(function (response) {
