@@ -52,7 +52,7 @@ export function createTransaction(transaction) {
     dispatch({ type: CREATE_TRANSACTION + START })
 
     return axios.post(
-        'http://93.170.131.108/api/CryptoCurrencies/transaction-create',
+        '/api/CryptoCurrencies/transaction-create',
         querystring.stringify(transaction)
     )
     .then(function (response) {

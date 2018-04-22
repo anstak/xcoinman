@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Home from "../Pages/Home" // "../Pages/Home"
 import Reviews from "../Pages/Reviews"
 import News from "../Pages/News"
-import Transaction from "../Pages/HowToStart" // "../Pages/Transaction"
+import Transaction from "../Pages/Transaction" // "../Pages/Transaction"
 import HowToStart from "../Pages/HowToStart"
 import {Route, Switch} from 'react-router-dom'
 
