@@ -1,0 +1,35 @@
+.amount-container {
+  display:flex;
+  font-size:14px;
+  margin:0px 0px;
+}
+
+.amount-input {
+  border:1px solid #ddd;
+  border-radius:5px 0 0 5px;
+  padding:10px;
+  border-right:none;
+  font-size:18px;
+  width:100%;
+  color:#333;
+}
+
+.btn.btn-default.amount-btn {
+  border:1px solid #ddd;
+  background-color:#FFFFFF !important;
+  border-radius:0 5px 5px 0;
+  border-left:none;
+  background-image:none;
+  box-shadow:none;
+  color:#919693;
+  pointer-events:none;
+}
+
+.amount-btn-icon {
+  height:25px;
+}
+
+.btn.btn-info.navbar-btn {
+  margin-left:5px;
+}
+

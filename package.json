@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.28.9",
     "express": "^4.15.2",
     "http-proxy-middleware": "^0.18.0",

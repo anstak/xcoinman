@@ -12,7 +12,7 @@ class ImagesDirection extends Component {
 		const {cryptoTo, cryptoFrom} = this.props
 		return (
 			<div>
-                <h4 className="mt0 text-center">Details from {cryptoFrom.Symbol} to {cryptoTo.Symbol} exchange: </h4>
+                <h4 className="mt0 text-center">Exhchange {cryptoFrom.Symbol} to {cryptoTo.Symbol} </h4>
                 <table className="crypto-details-images">
                     <tbody>
                         <tr>

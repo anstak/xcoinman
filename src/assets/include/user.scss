@@ -1,0 +1,115 @@
+.breadcrumb {
+  text-align:center;
+  background-color:transparent;
+  border-bottom:1px solid #eee;
+  padding-top:12px;
+  padding-bottom:12px;
+  margin-bottom:40px;
+}
+
+nav.navbar.navbar-default {
+  margin-bottom:0px;
+}
+
+@media (min-width:992px) {
+  .product h2 {
+    margin-top:0;
+  }
+}
+
+.navbar .navbar-brand {
+  font-size:24px;
+  line-height:18px;
+}
+
+.reviewer-name {
+  margin-right:10px;
+}
+
+.site-footer {
+  padding:20px 0;
+  text-align:center;
+}
+
+@media (min-width:768px) {
+  .site-footer h5 {
+    text-align:left;
+  }
+}
+
+.site-footer h5 {
+  color:inherit;
+  font-size:16px;
+}
+
+.site-footer .social-icons a:hover {
+  opacity:1;
+}
+
+.site-footer .social-icons a {
+  display:inline-block;
+  width:32px;
+  border:none;
+  font-size:20px;
+  border-radius:50%;
+  margin:4px;
+  color:#fff;
+  text-align:center;
+  background-color:#798FA5;
+  height:32px;
+  opacity:0.8;
+  line-height:32px;
+}
+
+@media (min-width:768px) {
+  .site-footer .social-icons {
+    text-align:right;
+  }
+}
+
+.btn.write-review {
+  float:right;
+  margin-top:-6px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family:inherit;
+  font-weight:700;
+  line-height:1.1;
+  color:#000000;
+}
+
+.navbar {
+  font-size:18px;
+  font-family:inherit;
+  font-weight:700;
+}
+
+.details-info {
+  background:#f8f8f8;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.exchange-info {
+  padding-top:20px;
+  padding-bottom:20px;
+  background:#eeeeee;
+}
+
+.control-label.details-info-attention {
+  margin-top:10px;
+}
+
+@media (min-width: 991px) {
+  .row.main-info-flex {
+    display:flex;
+    margin-bottom:20px;
+    overflow: hidden;
+    
+  }
+}
+
+.mt0 {
+  margin-top:0;
+}

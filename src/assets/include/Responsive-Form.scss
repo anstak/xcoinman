@@ -1,0 +1,55 @@
+#formdiv {
+  padding-bottom:5%;
+  margin-left:14%;
+  margin-right:14%;
+  border-radius:10.2px;
+  box-shadow:0 0 16px rgba(81, 203, 238, 1);
+}
+
+
+.crypto-details-images {
+	margin: 20px auto 10px;
+}
+.crypto-details-images .fa {
+	font-size: 30px;
+	padding: 0 10px;
+}
+
+.ovh {
+	overflow: hidden;
+}
+
+.ovh .alert {
+	margin-bottom: 5px;
+}
+
+.fade-enter {
+  max-height: 0;  
+}
+
+.fade-enter.fade-enter-active {
+  max-height: 200px;
+  transition: max-height 1000ms ease-in;
+}
+
+.fade-exit {
+  max-height: 200px;
+}
+
+.fade-exit.fade-exit-active {
+  max-height: 0;
+  transition: max-height 400ms ease-in;
+}
+
+.loader-container {
+	position: relative;
+}
+
+.loader-container .loader-abs {
+	position: absolute;
+	left: -15px;
+	top:-10px;
+	right: -15px;
+	bottom: -10px;
+    background: rgba(0,0,0,0.15);
+}
