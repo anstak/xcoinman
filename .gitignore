@@ -13,3 +13,4 @@ public/static
 .env.production.local
 /config.js
 /public_html
+/.htaccess
