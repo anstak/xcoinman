@@ -1,0 +1,5 @@
+SetEnv NODE_ENV production
+PassengerNodejs /home/<Symbol>/<Nickname>/.local/bin/node
+PassengerAppRoot /home/<Symbol>/<Nickname>/<WebsiteFolder>/build
+PassengerAppType node
+PassengerStartupFile server.js
