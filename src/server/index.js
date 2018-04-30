@@ -9,6 +9,8 @@ import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import {StaticRouter} from 'react-router-dom'
 import {loadAllPaymentSystems} from '../common/actions/paymentSystems'
+import xml from 'xml';
+import axios from 'axios';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -26,6 +28,34 @@ if (process.env.NODE_ENV === 'production') {
     }
   })
 }
+
+server.get("/rates.xml", (req, res) => {
+  axios.get('https://shapeshift.io/marketinfo/')
+    .then(function (response) {
+      var map = {rates: []}
+      response.data.forEach(function(pair) {
+        var symbols = pair.pair.split("_");
+        map.rates.push({
+          item: [
+            { from: symbols[0] },
+            { to: symbols[1] },
+            { in: 1 },
+            { out: pair.rate*1 },
+            { amount: pair.limit },
+            { minfee: pair.minerFee },
+            { minamount: pair.min },
+            { maxamount: pair.maxLimit },
+            { param: "floating" }
+          ]
+        })
+      })
+      res.set('Content-Type', 'text/xml');
+      res.send(xml(map));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  
+})
 
 server
   .disable('x-powered-by')
