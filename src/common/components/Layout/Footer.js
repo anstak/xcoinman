@@ -8,7 +8,7 @@ class Footer extends Component {
 		            <hr />
 		            <div className="row">
 		                <div className="col-sm-6">
-		                    <h5>Legalchange © 2018</h5>
+		                    <h5>XcoinMAN © 2018</h5>
 		                </div>
 		                <div className="col-sm-6 social-icons">
 		                	<a href=""><i className="fa fa-facebook"></i></a>

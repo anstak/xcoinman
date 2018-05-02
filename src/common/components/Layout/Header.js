@@ -3,6 +3,12 @@ import {NavLink} from 'react-router-dom'
 
 class Header extends Component {
 	render() {
+
+		const authBtns = []
+		// [
+	 //        <button className="btn btn-info navbar-btn navbar-right" type="button"><strong>SIGN UP</strong></button>,
+	 //        <button className="btn btn-primary navbar-btn navbar-right" type="button"><strong>SIGN IN</strong></button>
+		// ]
 		return (
 			<nav className="navbar navbar-default">
 			    <div className="container">
@@ -15,7 +21,9 @@ class Header extends Component {
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/how-to-start'>How to start</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>Reviews</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>News</NavLink></li>
-			            </ul><button className="btn btn-info navbar-btn navbar-right" type="button"><strong>SIGN UP</strong></button><button className="btn btn-primary navbar-btn navbar-right" type="button"><strong>SIGN IN</strong></button></div>
+			            </ul>
+			            { authBtns }
+			        </div>
 			    </div>
 			</nav>
 		);

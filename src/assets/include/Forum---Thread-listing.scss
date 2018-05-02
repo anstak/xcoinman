@@ -35,6 +35,10 @@
   display:table-cell;
 }
 
+.thread {
+  cursor: pointer;
+}
+
 .thread .title {
   padding:2px 5px;
   font-size:18px;
@@ -42,7 +46,6 @@
 }
 
 .thread:hover {
-  font-weight:bold;
   background:rgba(70,163,230,0.2);
 }
 

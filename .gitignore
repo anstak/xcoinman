@@ -14,3 +14,9 @@ public/static
 /config.js
 /public_html
 /.htaccess
+
+# exclude everything
+json_static/*
+
+# exception to the rule
+!json_static/.gitkeep 

@@ -15,6 +15,7 @@
     "css-loader": "^0.28.9",
     "express": "^4.15.2",
     "http-proxy-middleware": "^0.18.0",
+    "json-static": "0.0.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",

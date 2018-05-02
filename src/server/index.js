@@ -18,6 +18,7 @@ const server = express();
 
 // https://crypt.codemancers.com/posts/2017-06-03-reactjs-server-side-rendering-with-router-v4-and-redux/
 // https://github.com/wellyshen/react-cool-starter/blob/master/src/server.js
+// http://astronautweb.co/react-static-sites/
 
 if (process.env.NODE_ENV === 'production') {
   server.get('/*', function(req, res, next) { // redirect from https to http
@@ -63,7 +64,10 @@ server
   .get('/*', (req, res) => {
     const store = configureStore();
 
-    const promises = [store.dispatch(loadAllPaymentSystems())]
+    var promises = []
+    if (req.url == "/" || /\/(\w+)-to-(\w+)/.test(req.url)) {
+      promises.push(store.dispatch(loadAllPaymentSystems()))
+    }
 
     return Promise.all(promises).then((response) => {
       let context = {};

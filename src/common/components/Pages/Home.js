@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PaymentSystems from '../routes/PaymentSystems'
 import DetailsExchange from '../Exchange/DetailsExchange'
+import Comments from '../Comments/Comments'
+import JsonStatic from 'json-static'
+const articles = JsonStatic("posts.json")
 
 class Home extends Component {
+
 	render() {
 		return (
 			<div>
@@ -18,24 +22,12 @@ class Home extends Component {
 			        <div className="row">
 			            <div className="col-md-6">
 			                <div className="page-header">
-			                    <h3>Reviews<button className="btn btn-primary write-review" type="button">Write a review</button></h3>
+			                    <h3>
+			                    	<button className="btn btn-primary write-review" type="button">Read all reviews</button>
+			                    	Reviews
+			                    </h3>
 			                </div>
-			                <div className="media">
-			                    <div className="media-body">
-			                        <h4 className="media-heading">Love this!</h4>
-			                        <div><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-half"></i></div>
-			                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
-			                        <p><span className="reviewer-name"><strong>John Doe</strong></span><span className="review-date">7 Oct 2015</span></p>
-			                    </div>
-			                </div>
-			                <div className="media">
-			                    <div className="media-body">
-			                        <h4 className="media-heading">Fantastic product</h4>
-			                        <div><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-			                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
-			                        <p><span className="reviewer-name"><strong>Jane Doe</strong></span><span className="review-date">7 Oct 2015</span></p>
-			                    </div>
-			                </div>
+		                	<Comments limit={5} />
 			            </div>
 			            <div className="col-md-6">
 			                <div className="page-header">
