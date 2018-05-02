@@ -3,6 +3,7 @@ import PaymentSystems from '../routes/PaymentSystems'
 import DetailsExchange from '../Exchange/DetailsExchange'
 import Comments from '../Comments/Comments'
 import JsonStatic from 'json-static'
+import {NavLink} from 'react-router-dom'
 const articles = JsonStatic("posts.json")
 
 class Home extends Component {
@@ -23,7 +24,7 @@ class Home extends Component {
 			            <div className="col-md-6">
 			                <div className="page-header">
 			                    <h3>
-			                    	<button className="btn btn-primary write-review" type="button">Read all reviews</button>
+			                    	<NavLink className="btn btn-primary write-review" activeStyle={{color: '#336699'}} to='/reviews'>Read all reviews</NavLink>
 			                    	Reviews
 			                    </h3>
 			                </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import Moment from 'react-moment';
 
 class Comment extends Component {
 	static propTypes = {
@@ -8,16 +9,20 @@ class Comment extends Component {
 	}
 
 	render() {
-		const {author_name, date_gmt, content} = this.props.data
+		const {author_name, date_gmt, content } = this.props.data
 
 		return (
             <div className="media">
                 <div className="media-body">
                     <p>
                     	<span className="reviewer-name"><strong>{author_name}</strong></span>
-                    	<span className="review-date">7 Oct 2015</span>
+                    	<span className="review-date">
+				            <Moment format="hh:mm, DD.MM.YYYY">
+				                {date_gmt}
+				            </Moment>
+                    	</span>
                     </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
+                    <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
                 </div>
             </div>
 		);
