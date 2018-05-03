@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import PropTypes from 'prop-types'
-const dataComments = require('json-static')("comments.json")
+const dataComments = require('json-static')("comments.json") || []
 
 class Comments extends Component {
 	static propTypes = {

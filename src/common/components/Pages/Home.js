@@ -4,11 +4,12 @@ import DetailsExchange from '../Exchange/DetailsExchange'
 import Comments from '../Comments/Comments'
 import JsonStatic from 'json-static'
 import {NavLink} from 'react-router-dom'
-const articles = JsonStatic("posts.json")
 
 class Home extends Component {
 
 	render() {
+		const {title, content, seo} = this.props.page
+		debugger;
 		return (
 			<div>
 			    <div className="container">

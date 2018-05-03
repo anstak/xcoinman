@@ -18,7 +18,7 @@ class Header extends Component {
 			        <div
 			            className="collapse navbar-collapse" id="navcol-1">
 			            <ul className="nav navbar-nav">
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/how-to-start'>How to start</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>How to start</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>Reviews</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>News</NavLink></li>
 			            </ul>
