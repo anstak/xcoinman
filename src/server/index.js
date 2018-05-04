@@ -13,6 +13,7 @@ import xml from 'xml';
 import axios from 'axios';
 import ReactDOMServer from 'react-dom/server';
 import {Helmet} from "react-helmet";
+var fs = require('fs');
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 const server = express();
@@ -23,13 +24,51 @@ const server = express();
 
 if (process.env.NODE_ENV === 'production') {
   server.get('/*', function(req, res, next) { // redirect from https to http
-    if (req.headers['x-forwarded-proto'].indexOf("https") < 0 || req.headers.host.match(/^www/) !== null) {
+    if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'].indexOf("https") < 0 || req.headers.host.match(/^www/) !== null) {
       res.redirect('https://' + req.headers.host.replace(/^www\./, '') + req.url);
     } else {
       next();     
     }
   })
 }
+
+
+server.get("/json_static/*", (req, res) => {
+  fs.readFile("." + req.url, function(err, data) {  
+    if (err) {  
+      res.send(err);  
+    } else {  
+      res.set('Content-Type', 'text/json');
+      res.send(data);  
+    }  
+  });  
+  
+  // axios.get('https://shapeshift.io/marketinfo/')
+  //   .then(function (response) {
+  //     var map = {rates: []}
+  //     response.data.forEach(function(pair) {
+  //       var symbols = pair.pair.split("_");
+  //       map.rates.push({
+  //         item: [
+  //           { from: symbols[0] },
+  //           { to: symbols[1] },
+  //           { in: 1 },
+  //           { out: pair.rate*1 },
+  //           { amount: pair.limit },
+  //           { minfee: pair.minerFee },
+  //           { minamount: pair.min },
+  //           { maxamount: pair.maxLimit },
+  //           { param: "floating" }
+  //         ]
+  //       })
+  //     })
+  //     res.set('Content-Type', 'text/xml');
+  //     res.send(xml(map));
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });  
+})
 
 server.get("/rates.xml", (req, res) => {
   axios.get('https://shapeshift.io/marketinfo/')
