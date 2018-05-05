@@ -9,6 +9,7 @@ import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import {StaticRouter} from 'react-router-dom'
 import {loadAllPaymentSystems} from '../common/actions/paymentSystems'
+import {loadPages} from '../common/actions/wordpress'
 import xml from 'xml';
 import axios from 'axios';
 import ReactDOMServer from 'react-dom/server';
@@ -33,42 +34,16 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-server.get("/json_static/*", (req, res) => {
-  fs.readFile("." + req.url, function(err, data) {  
-    if (err) {  
-      res.send(err);  
-    } else {  
-      res.set('Content-Type', 'text/json');
-      res.send(data);  
-    }  
-  });  
-  
-  // axios.get('https://shapeshift.io/marketinfo/')
-  //   .then(function (response) {
-  //     var map = {rates: []}
-  //     response.data.forEach(function(pair) {
-  //       var symbols = pair.pair.split("_");
-  //       map.rates.push({
-  //         item: [
-  //           { from: symbols[0] },
-  //           { to: symbols[1] },
-  //           { in: 1 },
-  //           { out: pair.rate*1 },
-  //           { amount: pair.limit },
-  //           { minfee: pair.minerFee },
-  //           { minamount: pair.min },
-  //           { maxamount: pair.maxLimit },
-  //           { param: "floating" }
-  //         ]
-  //       })
-  //     })
-  //     res.set('Content-Type', 'text/xml');
-  //     res.send(xml(map));
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });  
-})
+// server.get("/json_static/*", (req, res) => {
+//   fs.readFile("." + req.url, function(err, data) {  
+//     if (err) {  
+//       res.send(err);  
+//     } else {  
+//       res.set('Content-Type', 'text/json');
+//       res.send(data);  
+//     }  
+//   });   
+// })
 
 server.get("/rates.xml", (req, res) => {
   axios.get('https://shapeshift.io/marketinfo/')
@@ -108,6 +83,7 @@ server
     if (req.url == "/" || /\/(\w+)-to-(\w+)/.test(req.url)) {
       promises.push(store.dispatch(loadAllPaymentSystems()))
     }
+    promises.push(store.dispatch(loadPages()))
 
     return Promise.all(promises).then((response) => {
       let context = {};

@@ -32,29 +32,43 @@ const emptyPage = {
     }
 }
 
-export default (OriginalComponent) => class WrappedComponent extends ReactComponent {
 
-    componentDidMount() {
-        debugger;
-        // const {loaded_pages, loading_pages, pages, loadPages} = this.props
-        // if (!loading_pages && Object.keys(pages).length === 0) loadPages()
+
+var pageDataDecorator = function(OriginalComponent) {
+
+    class WrappedComponent extends ReactComponent {
+
+        componentDidMount() {
+            const {loaded_pages, loading_pages, pages, loadPages} = this.props
+            if (!loaded_pages) loadPages()
+        }
+
+        render() {
+            const {loaded_pages, loading_pages, pages, loadPages, location } = this.props
+            const pageName = location.pathname === "/" ? "home" : location.pathname.split("/").pop()
+            var page = pages[pageName] || emptyPage
+
+            return (
+                <div>
+                    <Helmet>
+                        <title>{page.seo.title || "XcoinMAN"}</title>
+                        <meta name="description" content={page.seo.description || "Crypto changer"} />
+                    </Helmet>                
+                    <OriginalComponent {...this.props} page={page} />
+                </div>
+            )
+        }
     }
 
-    render() {
-        //const {loaded_pages, loading_pages, pages, loadPages} = this.props
 
-        var pages = [];
+    return connect((state) => {
+        return {
+            pages: state.wordpress.pages,
+            loading_pages: state.wordpress.loading_pages,
+            loaded_pages: state.wordpress.loaded_pages
+        }
+    }, {loadPages})(WrappedComponent)
 
-        // if (Object.keys(pages).length === 0) return null
-
-        return <OriginalComponent {...this.props} />
-    }
 }
 
-// export default connect((state) => {
-//     return {
-//         pages: state.wordpress.pages,
-//         loading_pages: state.wordpress.loading_pages,
-//         loaded_pages: state.wordpress.loaded_pages
-//     }
-// }, {loadPages})(Main)
+export default pageDataDecorator
