@@ -15,7 +15,6 @@
     "css-loader": "^0.28.9",
     "express": "^4.15.2",
     "http-proxy-middleware": "^0.18.0",
-    "json-static": "0.0.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",
