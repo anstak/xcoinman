@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import {redirectToTransactionFinished, getTransactionStatus} from '../../actions/Transaction'
+import {redirectToTransactionFinished, getTransactionStatus} from '../../actions/transaction'
 import Loader from '../Shared/Loader'
 import ImagesDirection from '../Exchange/ImagesDirection'
 import TransactionForm from '../Transaction/Form'

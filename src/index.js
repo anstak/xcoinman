@@ -15,6 +15,7 @@ const port = process.env.PORT || 3000;
 var server = express();
 
 server.use('/api', proxy({target: config.server, changeOrigin: true}));
+server.use('/json_static', proxy({target: config.wordpress, changeOrigin: true}));
 
 server.use((req, res) => app.handle(req, res))
 .listen(port, function(err) {

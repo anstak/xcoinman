@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import pageDataContent from '../../decorators/pageDataContent'
 
 class News extends Component {
 	render() {
@@ -17,4 +18,4 @@ class News extends Component {
 	}
 }
 
-export default News
+export default pageDataContent(News)

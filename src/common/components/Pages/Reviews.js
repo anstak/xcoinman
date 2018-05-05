@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comments from '../Comments/Comments'
+import pageDataContent from '../../decorators/pageDataContent'
 
 class Reviews extends Component {
 	render() {
@@ -13,4 +14,4 @@ class Reviews extends Component {
 	}
 }
 
-export default Reviews
+export default pageDataContent(Reviews) 

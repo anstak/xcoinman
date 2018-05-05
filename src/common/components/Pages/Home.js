@@ -4,12 +4,12 @@ import DetailsExchange from '../Exchange/DetailsExchange'
 import Comments from '../Comments/Comments'
 import JsonStatic from 'json-static'
 import {NavLink} from 'react-router-dom'
+import pageDataContent from '../../decorators/pageDataContent';
 
 class Home extends Component {
 
 	render() {
-		const {title, content, seo} = this.props.page
-		debugger;
+		//const {title, content, seo} = this.props.page
 		return (
 			<div>
 			    <div className="container">
@@ -50,4 +50,4 @@ class Home extends Component {
 	}
 }
 
-export default Home
+export default pageDataContent(Home)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import pageDataContent from '../../decorators/pageDataContent';
 
 class Start extends Component {
 	render() {
@@ -14,4 +14,4 @@ class Start extends Component {
 	}
 }
 
-export default Start 
+export default pageDataContent(Start) 
