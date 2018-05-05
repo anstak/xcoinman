@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PaymentSystems from '../routes/PaymentSystems'
 import DetailsExchange from '../Exchange/DetailsExchange'
 import Comments from '../Comments/Comments'
-import JsonStatic from 'json-static'
 import {NavLink} from 'react-router-dom'
 import pageDataContent from '../../decorators/pageDataContent';
 
