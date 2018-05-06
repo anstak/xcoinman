@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import PropTypes from 'prop-types'
-const dataComments = []
+import {connect} from 'react-redux'
+import {loadComments} from '../../actions/wordpress'
 
 class Comments extends Component {
 	static propTypes = {
@@ -9,17 +10,31 @@ class Comments extends Component {
 		limit: PropTypes.number
 	}
 
+
+    componentDidMount() {
+        const {loaded_comments, loading_comments, comments, loadComments} = this.props
+        if (!loaded_comments) loadComments()
+    }
+
 	render() {
-		const comments = dataComments.map((comment) => {
+		const {comments, loading_comments, loaded_comments} = this.props
+
+		const commentsHtml = comments.map((comment) => {
 			return <Comment key={comment.id} data={comment} />
 		})
 
 		return (
 			<div>
-                {comments}
+                {commentsHtml}
 			</div>
 		);
 	}
 }
 
-export default Comments
+export default connect((state) => {
+    return {
+        comments: state.wordpress.comments,
+        loading_comments: state.wordpress.loading_comments,
+        loaded_comments: state.wordpress.loaded_comments
+    }
+}, { loadComments })(Comments)
