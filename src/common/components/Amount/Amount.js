@@ -79,14 +79,14 @@ class Amount extends Component {
 		var selected_id = type === "from" ? selected_from : selected_to
 		if (selected_id) {
 			var paymentSystem = paymentSystemsMap[selected_id]
-			var pic = paymentSystem.imageSmall.replace("jpeg", "png")
+			var pic = paymentSystem.imageSmall.match(/([^\/]+)(?=\.\w+$)/)[0]
 		}
 		return (
 			<div>
 	            <div className="amount-container">
 	            	<input type="text" value = {this.state.amount} onChange = {this.handleChange} name="amount" placeholder="amount" className="amount-input" />
 	            	<button className="btn btn-default amount-btn" type="button"> 
-	            		<img src={pic} className="amount-btn-icon" />
+	            		<span className={"coin_" + pic}></span>
 	            	</button>
 	            </div>
 			</div>

@@ -7,7 +7,8 @@ import {loadNews} from '../../actions/wordpress'
 class News extends Component {
 	static propTypes = {
 		// from attrs
-		limit: PropTypes.number
+		limit: PropTypes.number,
+		type: PropTypes.string
 	}
 
 
@@ -17,10 +18,10 @@ class News extends Component {
     }
 
 	render() {
-		const {news, loading_news, loaded_news} = this.props
+		const {news, loading_news, loaded_news, limit, type} = this.props
 
 		const newsHtml = news.map((single) => {
-			return <Single key={single.id} data={single} />
+			return <Single key={single.id} data={single} type={type} />
 		})
 
 		return (

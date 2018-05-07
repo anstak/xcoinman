@@ -4,10 +4,13 @@ import pageDataContent from '../../decorators/pageDataContent'
 
 class Reviews extends Component {
 	render() {
+		const {title, content, seo} = this.props.page
+
 		return (
 			<div className="container">
-				<h1 className="text-center">Reviews</h1>
-                <br />
+				<h1 className="text-center">{title.rendered}</h1>
+				<div dangerouslySetInnerHTML={{ __html: content.rendered }} />
+				<hr />
                 <Comments />
 			</div>
 		);

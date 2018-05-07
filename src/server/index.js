@@ -9,7 +9,7 @@ import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import {StaticRouter} from 'react-router-dom'
 import {loadAllPaymentSystems} from '../common/actions/paymentSystems'
-import {loadPages, loadPosts, loadComments} from '../common/actions/wordpress'
+import {loadPages, loadPosts, loadNews, loadComments} from '../common/actions/wordpress'
 import xml from 'xml';
 import axios from 'axios';
 import ReactDOMServer from 'react-dom/server';
@@ -83,9 +83,13 @@ server
     if (req.url == "/" || /\/(\w+)-to-(\w+)/.test(req.url)) {
       promises.push(store.dispatch(loadAllPaymentSystems()))
       promises.push(store.dispatch(loadComments()))
+      promises.push(store.dispatch(loadNews()))
     }
     if (req.url == "/reviews") {
       promises.push(store.dispatch(loadComments()))
+    }
+    if (req.url == "/news") {
+      promises.push(store.dispatch(loadNews()))
     }
     promises.push(store.dispatch(loadPages()))
 

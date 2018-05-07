@@ -49,8 +49,7 @@ class PaymentSystemsList extends Component {
 			''
 			return (
 	        	<button className={this.getClassName(paymentSystem.Symbol)} disabled={this.getDisabled(paymentSystem.Symbol)} type="button" key={paymentSystem.Symbol} onClick={this.toggleClick(paymentSystem.Symbol, type)}>
-	        		<i className="icon ion-android-arrow-forward pull-right"></i>
-	        		<img src={paymentSystem.imageSmall.replace("jpeg", "png")} />
+	        		<span className={"coin_icon coin_" + paymentSystem.imageSmall.match(/([^\/]+)(?=\.\w+$)/)[0]} />
 	        		{paymentSystem.Name}
 	        	</button>
 			)

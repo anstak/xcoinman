@@ -35,7 +35,7 @@ class Home extends Component {
 			                <div className="page-header">
 			                    <h3>News </h3>
 			                </div>
-		                	<News limit={5} />
+		                	<News limit={5} type="short" />
 			            </div>
 			        </div>
 			    </div>
