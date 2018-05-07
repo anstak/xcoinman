@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PaymentSystems from '../routes/PaymentSystems'
 import DetailsExchange from '../Exchange/DetailsExchange'
 import Comments from '../Comments/Comments'
+import News from '../News/News'
 import {NavLink} from 'react-router-dom'
 import pageDataContent from '../../decorators/pageDataContent';
 
@@ -24,7 +25,7 @@ class Home extends Component {
 			            <div className="col-md-6">
 			                <div className="page-header">
 			                    <h3>
-			                    	<NavLink className="btn btn-primary write-review" activeStyle={{color: '#336699'}} to='/reviews'>Read all reviews</NavLink>
+			                    	<NavLink className="btn btn-primary write-review" to='/reviews'>Read all reviews</NavLink>
 			                    	Reviews
 			                    </h3>
 			                </div>
@@ -34,13 +35,7 @@ class Home extends Component {
 			                <div className="page-header">
 			                    <h3>News </h3>
 			                </div>
-			                <ul className="thread-list">
-			                    <li className="thread"><span className="time">Apr 21</span><span className="title">Maecenas finibus est nec pretium molestie. </span></li>
-			                    <li className="thread"><span className="time">Apr 20</span><span className="title">Curabitur consectetur velit pharetra ex eleifend tempor. </span></li>
-			                    <li className="thread"><span className="time">Apr 20</span><span className="title">Fusce iaculis ligula at nisl mollis suscipit. </span></li>
-			                    <li className="thread"><span className="time">Apr 18</span><span className="title">Pellentesque tempus augue id risus lacinia vehicula. </span></li>
-			                    <li className="thread"><span className="time">Apr 17</span><span className="title">Quisque lacinia massa non ex lobortis congue. </span></li>
-			                </ul>
+		                	<News limit={5} />
 			            </div>
 			        </div>
 			    </div>

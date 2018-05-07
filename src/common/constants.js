@@ -12,6 +12,7 @@ export const GET_TRANSACTION_STATUS = 'GET_TRANSACTION_STATUS'
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const LOAD_PAGES = 'LOAD_PAGES'
 export const LOAD_COMMENTS = 'LOAD_COMMENTS'
+export const LOAD_NEWS = 'LOAD_NEWS'
 
 export const START = '_START'
 export const SUCCESS = '_SUCCESS'

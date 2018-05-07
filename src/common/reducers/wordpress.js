@@ -1,4 +1,4 @@
-import {LOAD_POSTS, LOAD_PAGES, LOAD_COMMENTS, START, FAIL, SUCCESS} from "../constants"
+import {LOAD_POSTS, LOAD_PAGES, LOAD_COMMENTS, LOAD_NEWS, START, FAIL, SUCCESS} from "../constants"
 import {arrToMap} from "../helpers"
 
 const initialState = {
@@ -8,9 +8,12 @@ const initialState = {
     loaded_posts: false,
     loading_comments: false,
     loaded_comments: false,
+    loading_news: false,
+    loaded_news: false,
     pages: {},
     posts: {},
-    comments: []
+    comments: [],
+    news: []
 }
 
 export default function(state = initialState, action = {}) {
@@ -67,6 +70,23 @@ export default function(state = initialState, action = {}) {
         loaded_comments: true,
         loading_comments: false,
         comments: payload
+      }
+    case LOAD_NEWS + START:
+      return {
+        ...state,
+        loading_news: true
+      }
+    case LOAD_NEWS + FAIL:
+      return {
+        ...state,
+        errorMessage
+      }
+    case LOAD_NEWS + SUCCESS:
+      return {
+        ...state,
+        loaded_news: true,
+        loading_news: false,
+        news: payload
       }
     default:
       return state

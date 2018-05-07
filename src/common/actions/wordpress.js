@@ -1,5 +1,5 @@
 import axios from '../../axios'
-import { LOAD_POSTS, LOAD_PAGES, LOAD_COMMENTS, START, SUCCESS, FAIL } from '../constants'
+import { LOAD_POSTS, LOAD_PAGES, LOAD_COMMENTS, LOAD_NEWS, START, SUCCESS, FAIL } from '../constants'
 
 export function loadPages() {
   return dispatch => {
@@ -59,6 +59,27 @@ export function loadPosts() {
       dispatch({
         type: LOAD_POSTS + FAIL,
         errorMessage: "Can't get posts"
+      })
+    });
+  }
+}
+
+export function loadNews() {
+  return dispatch => {
+    dispatch({ type: LOAD_NEWS + START })
+    return axios.get(
+        '/json_static/news.json'
+    )
+    .then(function (response) {
+        dispatch({
+            type: LOAD_NEWS + SUCCESS,
+            payload: response.data
+        })
+    })
+    .catch(function (error) {
+      dispatch({
+        type: LOAD_NEWS + FAIL,
+        errorMessage: "Can't get news"
       })
     });
   }
