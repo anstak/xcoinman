@@ -10,6 +10,7 @@ import serialize from 'serialize-javascript';
 import {StaticRouter} from 'react-router-dom'
 import {loadAllPaymentSystems} from '../common/actions/paymentSystems'
 import {loadPages, loadPosts, loadNews, loadComments} from '../common/actions/wordpress'
+import {toggleActiveCrypto, setAmountCrypto} from '../common/actions/exchangeInfo'
 import xml from 'xml';
 import axios from 'axios';
 import ReactDOMServer from 'react-dom/server';
@@ -84,6 +85,11 @@ server
       promises.push(store.dispatch(loadAllPaymentSystems()))
       promises.push(store.dispatch(loadComments()))
       promises.push(store.dispatch(loadNews()))
+    }
+    if (/\/(\w+)-to-(\w+)/.test(req.url)) {
+      var pair = req.url.match(/\/(\w+)-to-(\w+)/);
+      promises.push(store.dispatch(toggleActiveCrypto(pair[1], "from")))
+      promises.push(store.dispatch(toggleActiveCrypto(pair[2], "to")))
     }
     if (req.url == "/reviews") {
       promises.push(store.dispatch(loadComments()))

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import {loadCryptoPair} from '../../actions/exchangeInfo'
 import FormExchange from './FormExchange'
 import ImagesDirection from './ImagesDirection'
+import {Helmet} from "react-helmet";
 import _ from 'lodash'
+const format = require('string-format').extend(String.prototype, {})
 
 class DetailsExchange extends Component {
 
@@ -62,7 +64,7 @@ class DetailsExchange extends Component {
 	}
 
 	getBody() {
-		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, currencyFrom, currencyTo} = this.props
+		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, currencyFrom, currencyTo, loaded_pages, pages} = this.props
 
         var cryptoFrom = paymentSystemsMap[selected_from]
         var cryptoTo = paymentSystemsMap[selected_to]
@@ -73,34 +75,36 @@ class DetailsExchange extends Component {
             if (!cryptoFrom || !cryptoTo) return null
         }
 
+    	var valuteReplacers = {valute1: cryptoFrom.Symbol, valute2: cryptoTo.Symbol}
 
-		if (!cryptoFrom) {
+        var page = pages["home"] || {page: {seo: {}, content: {}, title: {}}}
+
+		if (!cryptoFrom || !cryptoTo) {
 			return (
 				<div>
-					Need to select From currency
+					<h4 className="mt0 text-center"> { page.title.rendered } </h4>
+					<div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
 				</div>
 			)
 		}
 
-		if (!cryptoTo) {
-			return (
-				<div>
-					Need to select To currency
-				</div>
-			)
-		}
+		page = pages["directions"] || {page: {seo: {}, content: {}, title: {}}}
+
+		var helmet = (
+            <Helmet>
+                <title>{page.seo.title.format(valuteReplacers)}</title>
+                <meta name="description" content={page.seo.description.format(valuteReplacers)} />
+            </Helmet>    				
+		)
 
 		return (
 			<div>
-                <ImagesDirection cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} />
+				{helmet}
+				<h4 className="mt0 text-center">{page.title.rendered.format(valuteReplacers)} </h4>
                 <FormExchange cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} exchangeInfo={this.props.exchangeInfo} />
                 <br />
-                <p>Attention! In regard with the instability of Bitcoin's exchange rate, the amount you receive will be recalculated at the new exchange rate, if more than 10 minutes have passed from the inception of your order to the receipt of funds
-                        on our account. Making the order confirms acceptance of this condition and User agreement. </p>
-
-                <pre style={{wordWrap: "break-word", whiteSpace: "normal"}}>
-                    {JSON.stringify(this.props.exchangeInfo)}
-                </pre>		
+                <div dangerouslySetInnerHTML={{ __html: page.content.rendered.format(valuteReplacers) }} />
+	
 			</div>
 		)
 	}
@@ -109,6 +113,8 @@ class DetailsExchange extends Component {
 export default connect((state) => {
 	return {
         paymentSystemsMap: state.paymentSystems.entities,
-		exchangeInfo: state.exchangeInfo
+		exchangeInfo: state.exchangeInfo,
+        pages: state.wordpress.pages,
+        loaded_pages: state.wordpress.loaded_pages		
 	}
 }, { loadCryptoPair })(DetailsExchange)
