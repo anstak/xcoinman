@@ -15,18 +15,15 @@ class Form extends Component {
 		const { Deposit, DepositType } = this.props.data
 
 		var qrcode_url = "";
-		QRCode.toDataURL('3GWBh7pgUrZekcAr4m73NpNcgawgYnLMMm', { errorCorrectionLevel: 'L', version: 8 }, function (err, url) {
+		QRCode.toDataURL(Deposit, { errorCorrectionLevel: 'L', version: 8 }, function (err, url) {
 		  	qrcode_url = url
 		})
-
-
-		var qrcode_img = <img src={qrcode_url} />
 
 		return (
 			<div className="text-center">
 				Please make deposit to {DepositType} address: {Deposit} 
 				<br />
-				<img src={qrcode_url} />
+				<img src={qrcode_url} alt="QR code" />
 			</div>
 		);
 	}

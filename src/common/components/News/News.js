@@ -13,12 +13,12 @@ class News extends Component {
 
 
     componentDidMount() {
-        const {loaded_news, loading_news, news, loadNews} = this.props
+        const {loaded_news, loadNews} = this.props
         if (!loaded_news) loadNews()
     }
 
 	render() {
-		const {news, loading_news, loaded_news, limit, type} = this.props
+		const {news, type} = this.props
 
 		const newsHtml = news.map((single) => {
 			return <Single key={single.id} data={single} type={type} />

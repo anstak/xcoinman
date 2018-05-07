@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux"
 import PropTypes from 'prop-types'
-import toggleActive from '../../decorators/toggleActive'
 import {toggleActiveCrypto, setAmountCrypto} from '../../actions/exchangeInfo'
 
 class PaymentSystemsList extends Component {
@@ -43,13 +42,13 @@ class PaymentSystemsList extends Component {
 
 
 	render() {
-		const {list, type, activeItemId} = this.props
+		const {list, type} = this.props
 
 		const paymentSystems = list.map(paymentSystem => {
 			''
 			return (
 	        	<button className={this.getClassName(paymentSystem.Symbol)} disabled={this.getDisabled(paymentSystem.Symbol)} type="button" key={paymentSystem.Symbol} onClick={this.toggleClick(paymentSystem.Symbol, type)}>
-	        		<span className={"coin_icon coin_" + paymentSystem.imageSmall.match(/([^\/]+)(?=\.\w+$)/)[0]} />
+	        		<span className={"coin_icon coin_" + paymentSystem.imageSmall.match(/([^/]+)(?=\.\w+$)/)[0]} />
 	        		{paymentSystem.Name}
 	        	</button>
 			)

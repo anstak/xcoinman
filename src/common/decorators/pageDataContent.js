@@ -2,7 +2,6 @@ import React, {Component as ReactComponent} from 'react'
 import {Helmet} from "react-helmet";
 import {connect} from 'react-redux'
 import {loadPages} from '../actions/wordpress'
-import {mapToArr} from "../helpers"
 
 const emptyPage = {
     id: 1,
@@ -39,12 +38,12 @@ var pageDataDecorator = function(OriginalComponent) {
     class WrappedComponent extends ReactComponent {
 
         componentDidMount() {
-            const {loaded_pages, loading_pages, pages, loadPages} = this.props
+            const {loaded_pages, loadPages} = this.props
             if (!loaded_pages) loadPages()
         }
 
         render() {
-            const {loaded_pages, loading_pages, pages, loadPages, location } = this.props
+            const {pages, location } = this.props
             const pageName = location.pathname === "/" ? "home" : location.pathname.split("/").pop()
             var page = pages[pageName] || emptyPage
 

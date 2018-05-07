@@ -35,7 +35,7 @@ class Amount extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-		const {exchangeInfo, setAmountCrypto, type} = nextProps
+		const {exchangeInfo, type} = nextProps
 
 		const antiType = type === "from" ? "to" : "from"
 
@@ -55,7 +55,7 @@ class Amount extends Component {
 				if (type === "to") {
 					var value = exchangeInfo["amount_" + antiType] * exchangeInfo.rate.rate
 				} else {
-					var value = exchangeInfo["amount_" + antiType] / exchangeInfo.rate.rate
+					value = exchangeInfo["amount_" + antiType] / exchangeInfo.rate.rate
 				}
 				this.props.setAmountCrypto(value + "", this.props.type)
 			}
@@ -63,11 +63,9 @@ class Amount extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-    	const {exchangeInfo: {selected_from, selected_to, amount_from, amount_to, rate}} = nextProps
+    	const {exchangeInfo: {amount_from, amount_to, rate}} = nextProps
 
         return (
-        	// selected_from !== this.props.exchangeInfo.selected_from ||
-        	// selected_to !== this.props.exchangeInfo.selected_to ||
         	amount_from !== this.props.exchangeInfo.amount_from ||
         	amount_to !== this.props.exchangeInfo.amount_to ||
         	(rate && rate.rate !== this.props.exchangeInfo.rate.rate )
@@ -79,7 +77,7 @@ class Amount extends Component {
 		var selected_id = type === "from" ? selected_from : selected_to
 		if (selected_id) {
 			var paymentSystem = paymentSystemsMap[selected_id]
-			var pic = paymentSystem.imageSmall.match(/([^\/]+)(?=\.\w+$)/)[0]
+			var pic = paymentSystem.imageSmall.match(/([^/]+)(?=\.\w+$)/)[0]
 		}
 		return (
 			<div>
@@ -96,7 +94,6 @@ class Amount extends Component {
     handleChange = ev => {
 	    const target = ev.target;
 	    const value = target.type === 'checkbox' ? target.checked : target.value;
-	    const name = target.name;
 	    this.props.setAmountCrypto(value, this.props.type, true)
     }
 }

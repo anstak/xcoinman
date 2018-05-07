@@ -26,10 +26,10 @@ class FormExchange extends Component {
     }
 
 	render() {
-		const {cryptoTo, cryptoFrom, exchangeInfo: { transactionError, loading_transaction, loaded_transaction, transactionData }} = this.props
+		const {cryptoTo, cryptoFrom, exchangeInfo: { transactionError, loading_transaction, transactionData }} = this.props
         var loader = null
         if (loading_transaction) {
-            var loader = <div className="loader-abs"><Loader /></div>
+            loader = <div className="loader-abs"><Loader /></div>
         }
 
         if (transactionData.ID) {
@@ -57,7 +57,7 @@ class FormExchange extends Component {
                             <div className={this.getClassName("AgreeRules")}>
                                 <div className="checkbox">
                                     <label className="control-label">
-                                        <input type="checkbox" name="checkbox-input" value = {this.state.AgreeRules} onChange = {this.handleChange} name="AgreeRules" />
+                                        <input type="checkbox" value = {this.state.AgreeRules} onChange = {this.handleChange} name="AgreeRules" />
                                         I Agree with rules bla bla bla
                                     </label>
                                </div>
@@ -92,7 +92,7 @@ class FormExchange extends Component {
         ev.preventDefault()
 
         const {cryptoTo, cryptoFrom, exchangeInfo: { amount_from, rate }} = this.props
-        const {Wallet, RefundWallet, Email, Errors} = this.state
+        const {Wallet, RefundWallet, Email} = this.state
 
         if (!this.checkValidation()) return false
 

@@ -12,12 +12,12 @@ class Comments extends Component {
 
 
     componentDidMount() {
-        const {loaded_comments, loading_comments, comments, loadComments} = this.props
+        const {loaded_comments, loadComments} = this.props
         if (!loaded_comments) loadComments()
     }
 
 	render() {
-		const {comments, loading_comments, loaded_comments} = this.props
+		const {comments} = this.props
 
 		const commentsHtml = comments.map((comment) => {
 			return <Comment key={comment.id} data={comment} />

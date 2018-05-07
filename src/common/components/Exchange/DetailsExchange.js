@@ -31,7 +31,7 @@ class DetailsExchange extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-		const {exchangeInfo: {selected_from, selected_to, loaded_pair, loading_pair}, paymentSystemsMap, loadCryptoPair} = nextProps
+		const {exchangeInfo: {selected_from, selected_to, loading_pair}, paymentSystemsMap, loadCryptoPair} = nextProps
 
 		if (loading_pair) return false
 
@@ -46,7 +46,7 @@ class DetailsExchange extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        const {exchangeInfo, paymentSystemsMap} = nextProps
+        const {exchangeInfo} = nextProps
 
         return (
             !_.isEqual(exchangeInfo, this.props.exchangeInfo)
@@ -62,14 +62,15 @@ class DetailsExchange extends Component {
 	}
 
 	getBody() {
-		const {exchangeInfo: {selected_from, selected_to, amount_from, amount_to, rate}, paymentSystemsMap, currencyFrom, currencyTo} = this.props
+		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, currencyFrom, currencyTo} = this.props
+
+        var cryptoFrom = paymentSystemsMap[selected_from]
+        var cryptoTo = paymentSystemsMap[selected_to]
+
         if (currencyFrom && currencyTo) {
-            var cryptoFrom = paymentSystemsMap[currencyFrom.toUpperCase()]
-            var cryptoTo = paymentSystemsMap[currencyTo.toUpperCase()]
+            cryptoFrom = paymentSystemsMap[currencyFrom.toUpperCase()]
+            cryptoTo = paymentSystemsMap[currencyTo.toUpperCase()]
             if (!cryptoFrom || !cryptoTo) return null
-        } else {
-            var cryptoFrom = paymentSystemsMap[selected_from]
-            var cryptoTo = paymentSystemsMap[selected_to]
         }
 
 

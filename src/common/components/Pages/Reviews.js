@@ -4,7 +4,7 @@ import pageDataContent from '../../decorators/pageDataContent'
 
 class Reviews extends Component {
 	render() {
-		const {title, content, seo} = this.props.page
+		const {title, content} = this.props.page
 
 		return (
 			<div className="container">

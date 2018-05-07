@@ -8,7 +8,7 @@ export function loadAllPaymentSystems() {
         '/json_static/list.json'
     )
     .then(function (response) {
-      const {Data, Errors, Info, Type} = response.data
+      const {Data, Errors} = response.data
         if (Errors.length === 0) {
             dispatch({
                 type: LOAD_ALL_PAYMENT_SYSTEMS + SUCCESS,

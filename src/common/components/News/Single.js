@@ -11,7 +11,7 @@ class Single extends Component {
 	}
 
 	render() {
-		if (this.props.type == "short") return this.getShortSingle()
+		if (this.props.type === "short") return this.getShortSingle()
 		return this.getFullSingle()
 	}
 

@@ -19,7 +19,7 @@ export function getTransactionStatus(id) {
         params
     )
     .then(function (response) {
-      const {Data, Errors, Info, Type} = response.data
+      const {Data, Errors} = response.data
         if (Errors.length === 0) {
             dispatch({
                 type: GET_TRANSACTION_STATUS + SUCCESS,

@@ -25,7 +25,7 @@ export function loadCryptoPair(ratePair) {
         querystring.stringify({ratePair})
     )
     .then(function (response) {
-      const {Data, Errors, Info, Type} = response.data
+      const {Data, Errors} = response.data
         if (Errors.length === 0) {
             dispatch({
                 type: LOAD_CRYPTO_PAIR + SUCCESS,
@@ -56,7 +56,7 @@ export function createTransaction(transaction) {
         querystring.stringify(transaction)
     )
     .then(function (response) {
-      const {Data, Errors, Info, Type} = response.data
+      const {Data, Errors} = response.data
         if (Errors.length === 0) {
             dispatch({
                 type: CREATE_TRANSACTION + SUCCESS,
