@@ -75,7 +75,6 @@ class DetailsExchange extends Component {
             if (!cryptoFrom || !cryptoTo) return null
         }
 
-    	var valuteReplacers = {valute1: cryptoFrom.Symbol, valute2: cryptoTo.Symbol}
 
         var page = pages["home"] || {page: {seo: {}, content: {}, title: {}}}
 
@@ -88,6 +87,7 @@ class DetailsExchange extends Component {
 			)
 		}
 
+    	var valuteReplacers = {valute1: cryptoFrom.Symbol, valute2: cryptoTo.Symbol}
 		page = pages["directions"] || {page: {seo: {}, content: {}, title: {}}}
 
 		var helmet = (
