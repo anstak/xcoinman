@@ -76,7 +76,7 @@ class DetailsExchange extends Component {
         }
 
 
-        var page = pages["home"] || {page: {seo: {}, content: {}, title: {}}}
+        var page = pages["home"] || {fields: {}, content: {}, title: {}}
 
 		if (!cryptoFrom || !cryptoTo) {
 			return (
@@ -88,22 +88,21 @@ class DetailsExchange extends Component {
 		}
 
     	var valuteReplacers = {valute1: cryptoFrom.Symbol, valute2: cryptoTo.Symbol}
-		page = pages["directions"] || {page: {seo: {}, content: {}, title: {}}}
-
+		page = pages["valute1-to-valute2"] || {fields: {}, content: {}, title: {}}
 		var helmet = (
             <Helmet>
-                <title>{page.seo.title.format(valuteReplacers)}</title>
-                <meta name="description" content={page.seo.description.format(valuteReplacers)} />
+                <title>{page.fields.seo_title ? page.fields.seo_title.format(valuteReplacers) : ""}</title>
+                <meta name="description" content={page.fields.seo_description ? page.fields.seo_description.format(valuteReplacers) : ""} />
             </Helmet>    				
 		)
 
 		return (
 			<div>
 				{helmet}
-				<h4 className="mt0 text-center">{page.title.rendered.format(valuteReplacers)} </h4>
+				<h4 className="mt0 text-center">{page.title.rendered ? page.title.rendered.format(valuteReplacers) : ""} </h4>
                 <FormExchange cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} exchangeInfo={this.props.exchangeInfo} />
                 <br />
-                <div dangerouslySetInnerHTML={{ __html: page.content.rendered.format(valuteReplacers) }} />
+                <div dangerouslySetInnerHTML={{ __html: page.content.rendered ? page.content.rendered.format(valuteReplacers) : "" }} />
 	
 			</div>
 		)

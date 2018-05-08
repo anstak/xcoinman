@@ -25,9 +25,9 @@ const emptyPage = {
     menu_order: 0,
     template: "",
     meta: [ ],
-    seo: {
-        title: "Страница не найдена",
-        description: "Страница не найдена"
+    fields: {
+        seo_title: "Страница не найдена",
+        seo_description: "Страница не найдена"
     }
 }
 
@@ -50,8 +50,8 @@ var pageDataDecorator = function(OriginalComponent) {
             return (
                 <div>
                     <Helmet>
-                        <title>{page.seo.title || "XcoinMAN"}</title>
-                        <meta name="description" content={page.seo.description || "Crypto changer"} />
+                        <title>{page.fields.seo_title || "XcoinMAN"}</title>
+                        <meta name="description" content={page.fields.seo_description || "Crypto changer"} />
                     </Helmet>                
                     <OriginalComponent {...this.props} page={page} />
                 </div>

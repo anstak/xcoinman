@@ -9,7 +9,6 @@ import pageDataContent from '../../decorators/pageDataContent';
 class Home extends Component {
 
 	render() {
-		//const {title, content, seo} = this.props.page
 		return (
 			<div>
 			    <div className="container">
