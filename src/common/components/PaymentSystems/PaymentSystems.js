@@ -10,6 +10,9 @@ import {mapToArr} from "../../helpers"
 class PaymentSystems extends Component {
 
 	static propTypes = {
+        //from decorator
+        page: PropTypes.object.isRequired,
+
         //from connect
         paymentSystems: PropTypes.array.isRequired,
         loading: PropTypes.bool.isRequired,
@@ -33,7 +36,7 @@ class PaymentSystems extends Component {
 	}
 
 	getBody() {
-		const {loading, paymentSystems, currencyFrom, currencyTo, history} = this.props
+		const {loading, paymentSystems, currencyFrom, currencyTo, history, page} = this.props
 
 		if (!paymentSystems || loading) {
 			return (
@@ -43,17 +46,17 @@ class PaymentSystems extends Component {
 			return (
 				<div className="row">
 			        <div className="col-md-6 col-sm-6">
-			            <h4 className="mt0">Отправить</h4>
-			            <Amount type="from" />
-			            <h5 className="choose-payment-system">Choose Payment System</h5>
+			            <h4 className="mt0">{page.fields.home_send}</h4>
+			            <Amount type="from" placeholder={page.fields.home_amount_to_send} />
+			            <h5 className="choose-payment-system">{page.fields.home_choose_ps}</h5>
 			            <div>
 			            	<PaymentSystemsList list={paymentSystems} type="from" selected={currencyFrom} history={history} />
 			        	</div>
 			        </div>
 			        <div className="col-md-6 col-sm-6">
-			            <h4 className="mt0">Получить </h4>
-			            <Amount type="to" />
-			            <h5 className="choose-payment-system">Choose Payment System</h5>
+			            <h4 className="mt0">{page.fields.home_receive}</h4>
+			            <Amount type="to" placeholder={page.fields.home_amount_to_receive} />
+			            <h5 className="choose-payment-system">{page.fields.home_choose_ps}</h5>
 			            <div>
 			            	<PaymentSystemsList list={paymentSystems} type="to" selected={currencyTo} history={history} />
 			        	</div>

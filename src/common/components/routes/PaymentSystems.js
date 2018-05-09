@@ -13,7 +13,7 @@ class Change extends Component {
 	}
 
 	getPaymentSystems = (props) => {
-		const {match, history, location} = props;
+		const {match, history, location, page} = props;
 		// if (match.params.currencyFrom && match.params.currencyTo) {
 
 		// }
@@ -25,10 +25,10 @@ class Change extends Component {
 				currencyFrom: found[1],
 				currencyTo: found[2]
 			}
-			return <PaymentSystems {...params} history={history} />
+			return <PaymentSystems {...params} history={history} {...this.props} />
 		} else {
 			
-			return <PaymentSystems {...match.params} history={history} />
+			return <PaymentSystems {...match.params} history={history} {...this.props} />
 		}
 		
 	}

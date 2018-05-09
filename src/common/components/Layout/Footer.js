@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Footer extends Component {
 	render() {
+		const {page} = this.props
+
 		return (
 		    <footer className="site-footer">
-		        <div className="container">
+		        <div className="container text-left">
 		            <hr />
 		            <div className="row">
 		                <div className="col-sm-6">
-		                    <h5>XcoinMAN © 2018</h5>
+		                    <strong className="footer-logo">XcoinMAN</strong> 
+		                    <span>{page.fields.footer_copyright}</span>
 		                </div>
 		                <div className="col-sm-6">
 		                	<a href="" className="pull-right">
@@ -25,4 +29,4 @@ class Footer extends Component {
 	}
 }
 
-export default Footer
+export default connect((state) => {return { page: state.wordpress.pages["home"] }})(Footer)

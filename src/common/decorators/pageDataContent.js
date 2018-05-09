@@ -44,7 +44,7 @@ var pageDataDecorator = function(OriginalComponent) {
 
         render() {
             const {pages, location } = this.props
-            const pageName = location.pathname === "/" ? "home" : location.pathname.split("/").pop()
+            const pageName = location.pathname === "/" || /\/(\w+)-to-(\w+)/.test(location.pathname) ? "home" : location.pathname.split("/").pop()
             var page = pages[pageName] || emptyPage
 
             return (

@@ -19,6 +19,7 @@ class Amount extends Component {
         }).isRequired,
         // from attrs
         type: PropTypes.string.isRequired,
+        placeholder: PropTypes.string.isRequired
 	}
 
     state = {
@@ -73,7 +74,7 @@ class Amount extends Component {
     }
 
 	render() {
-		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, type} = this.props
+		const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, type, placeholder} = this.props
 		var selected_id = type === "from" ? selected_from : selected_to
 		if (selected_id) {
 			var paymentSystem = paymentSystemsMap[selected_id]
@@ -82,7 +83,7 @@ class Amount extends Component {
 		return (
 			<div>
 	            <div className="amount-container">
-	            	<input type="text" value = {this.state.amount} onChange = {this.handleChange} name="amount" placeholder="amount" className="amount-input" />
+	            	<input type="text" value = {this.state.amount} onChange = {this.handleChange} name="amount" placeholder={placeholder} className="amount-input" />
 	            	<button className="btn btn-default amount-btn" type="button"> 
 	            		<span className={"coin_" + pic}></span>
 	            	</button>

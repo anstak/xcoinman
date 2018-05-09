@@ -100,7 +100,7 @@ class DetailsExchange extends Component {
 			<div>
 				{helmet}
 				<h4 className="mt0 text-center">{page.title.rendered ? page.title.rendered.format(valuteReplacers) : ""} </h4>
-                <FormExchange cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} exchangeInfo={this.props.exchangeInfo} />
+                <FormExchange cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} exchangeInfo={this.props.exchangeInfo} page={page} />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: page.content.rendered ? page.content.rendered.format(valuteReplacers) : "" }} />
 	

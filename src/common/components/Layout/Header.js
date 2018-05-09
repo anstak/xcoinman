@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom'
+import { connect } from 'react-redux';
 
 class Header extends Component {
 	render() {
+		const {pages} = this.props
 
 		const authBtns = []
 		// [
@@ -18,9 +20,9 @@ class Header extends Component {
 			        <div
 			            className="collapse navbar-collapse" id="navcol-1">
 			            <ul className="nav navbar-nav">
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>How to start</NavLink></li>
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>Reviews</NavLink></li>
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>News</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>{pages.start.fields.menu_name}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>{pages.reviews.fields.menu_name}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>{pages.news.fields.menu_name}</NavLink></li>
 			            </ul>
 			            { authBtns }
 			        </div>
@@ -30,4 +32,6 @@ class Header extends Component {
 	}
 }
 
-export default Header
+export default connect((state) => {return { pages: state.wordpress.pages }}, null, null, {
+  pure: false
+})(Header)

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { CSSTransition } from 'react-transition-group'
 import Loader from '../Shared/Loader'
 import {Redirect} from 'react-router-dom'
+const format = require('string-format').extend(String.prototype, {})
 
 class FormExchange extends Component {
     static propTypes = {
@@ -12,6 +13,7 @@ class FormExchange extends Component {
         exchangeInfo: PropTypes.object.isRequired,
         cryptoTo: PropTypes.object.isRequired,
         cryptoFrom: PropTypes.object.isRequired,
+        page: PropTypes.object.isRequired,
 
         //from connect
         createTransaction: PropTypes.func.isRequired
@@ -26,7 +28,9 @@ class FormExchange extends Component {
     }
 
 	render() {
-		const {cryptoTo, cryptoFrom, exchangeInfo: { transactionError, loading_transaction, transactionData }} = this.props
+		const {page, cryptoTo, cryptoFrom, exchangeInfo: { transactionError, loading_transaction, transactionData }} = this.props
+
+        var valuteReplacers = {valute1: cryptoFrom.Symbol, valute2: cryptoTo.Symbol}
         var loader = null
         if (loading_transaction) {
             loader = <div className="loader-abs"><Loader /></div>
@@ -43,22 +47,26 @@ class FormExchange extends Component {
                         <div className="loader-container">
                             {loader}
                             <div className={this.getClassName("Email")} >
-                                <label className="control-label" htmlFor="Wallet">Your E-mail</label>
-                                <input className="form-control" value = {this.state.Email} onChange = {this.handleChange} name="Email" type="text" placeholder="@" />
+                                <label className="control-label" htmlFor="Wallet">{page.fields.form_your_email}</label>
+                                <input className="form-control" value = {this.state.Email} onChange = {this.handleChange} name="Email" type="text" placeholder={page.fields.form_your_email_placeholder} />
                             </div>
                             <div className={this.getClassName("Wallet")} >
-                                <label className="control-label" htmlFor="Wallet">Your {cryptoTo.Symbol} address</label>
-                                <input className="form-control" value = {this.state.Wallet} onChange = {this.handleChange} name="Wallet" type="text" placeholder={cryptoTo.Symbol + " destination address"} />
+                                <label className="control-label" htmlFor="Wallet">
+                                    {page.fields.form_address_to_receive ? page.fields.form_address_to_receive.format(valuteReplacers) : ""}
+                                </label>
+                                <input className="form-control" value = {this.state.Wallet} onChange = {this.handleChange} name="Wallet" type="text" placeholder={page.fields.form_address_to_receive_placeholder} />
                             </div>
                             <div className={this.getClassName("RefundWallet")} >
-                                <label className="control-label" htmlFor="RefundWallet">Your {cryptoFrom.Symbol} address</label>
-                                <input className="form-control" value = {this.state.RefundWallet} onChange = {this.handleChange} name="RefundWallet" type="text" placeholder={cryptoFrom.Symbol + " refund address"} />
+                                <label className="control-label" htmlFor="RefundWallet">
+                                    {page.fields.form_address_from_send ? page.fields.form_address_from_send.format(valuteReplacers) : ""}
+                                </label>
+                                <input className="form-control" value = {this.state.RefundWallet} onChange = {this.handleChange} name="RefundWallet" type="text" placeholder={page.fields.form_address_from_send_placeholder} />
                             </div>
                             <div className={this.getClassName("AgreeRules")}>
                                 <div className="checkbox">
                                     <label className="control-label">
                                         <input type="checkbox" value = {this.state.AgreeRules} onChange = {this.handleChange} name="AgreeRules" />
-                                        I Agree with rules bla bla bla
+                                        {page.fields.form_rules}
                                     </label>
                                </div>
                             </div>
@@ -71,8 +79,9 @@ class FormExchange extends Component {
                                 </div>
                             </div>
                         </CSSTransition>   
+                        
                         <br /> 
-                        <button className="btn btn-primary" type="submit">Make exchange</button>	
+                        <button className="btn btn-primary" type="submit">{page.fields.form_make_exchange_btn}</button>	
                     </fieldset>
                 </form>
 
