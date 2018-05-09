@@ -83,8 +83,8 @@ server
     var promises = []
     if (req.url == "/" || /\/(\w+)-to-(\w+)/.test(req.url)) {
       promises.push(store.dispatch(loadAllPaymentSystems()))
-      promises.push(store.dispatch(loadComments()))
-      promises.push(store.dispatch(loadNews()))
+      promises.push(store.dispatch(loadComments(req.headers.host)))
+      promises.push(store.dispatch(loadNews(req.headers.host)))
     }
     if (/\/(\w+)-to-(\w+)/.test(req.url)) {
       var pair = req.url.match(/\/(\w+)-to-(\w+)/);
@@ -92,12 +92,12 @@ server
       promises.push(store.dispatch(toggleActiveCrypto(pair[2], "to")))
     }
     if (req.url == "/reviews") {
-      promises.push(store.dispatch(loadComments()))
+      promises.push(store.dispatch(loadComments(req.headers.host)))
     }
     if (req.url == "/news") {
-      promises.push(store.dispatch(loadNews()))
+      promises.push(store.dispatch(loadNews(req.headers.host)))
     }
-    promises.push(store.dispatch(loadPages()))
+    promises.push(store.dispatch(loadPages(req.headers.host)))
 
     return Promise.all(promises).then((response) => {
       let context = {};

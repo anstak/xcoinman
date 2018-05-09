@@ -1,11 +1,21 @@
 import axios from '../../axios'
 import { LOAD_POSTS, LOAD_PAGES, LOAD_COMMENTS, LOAD_NEWS, START, SUCCESS, FAIL } from '../constants'
 
-export function loadPages() {
+function getLanguageFromHost(request_host) {
+  const host = typeof window === 'undefined' ? request_host : window.location.host;
+  var lang = "ru"
+  if (host.split(".")[1] === "com") {
+    lang = "en"
+  }
+  return lang;
+}
+
+export function loadPages(request_host) {
+  var lang = getLanguageFromHost(request_host)
   return dispatch => {
     dispatch({ type: LOAD_PAGES + START })
     return axios.get(
-        '/json_static/ru-pages.json'
+        `/json_static/${lang}-pages.json`
     )
     .then(function (response) {
         dispatch({
@@ -22,11 +32,12 @@ export function loadPages() {
   }
 }
 
-export function loadComments() {
+export function loadComments(request_host) {
+  var lang = getLanguageFromHost(request_host)
   return dispatch => {
     dispatch({ type: LOAD_COMMENTS + START })
     return axios.get(
-        '/json_static/ru-comments.json'
+        `/json_static/${lang}-comments.json`
     )
     .then(function (response) {
         dispatch({
@@ -43,11 +54,12 @@ export function loadComments() {
   }
 }
 
-export function loadPosts() {
+export function loadPosts(request_host) {
+  var lang = getLanguageFromHost(request_host)
   return dispatch => {
     dispatch({ type: LOAD_POSTS + START })
     return axios.get(
-        '/json_static/ru-posts.json'
+        `/json_static/${lang}-posts.json`
     )
     .then(function (response) {
         dispatch({
@@ -64,11 +76,12 @@ export function loadPosts() {
   }
 }
 
-export function loadNews() {
+export function loadNews(request_host) {
+  var lang = getLanguageFromHost(request_host)
   return dispatch => {
     dispatch({ type: LOAD_NEWS + START })
     return axios.get(
-        '/json_static/ru-news.json'
+        `/json_static/${lang}-news.json`
     )
     .then(function (response) {
         dispatch({
