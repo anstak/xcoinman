@@ -15,7 +15,7 @@ class Main extends Component {
 		return (
 			<div>
 				<Switch>
-					<Route path="/start" component={Start} />
+					<Route path="/(start|faq|rates|terms-of-service|about)" component={Start} />
 					<Route path="/" exact component={Home} />
 					<Route path="/:currencyFrom(\w+)-to-:currencyTo(\w+)" component={Home} />
 					<Route path="/reviews" component={Reviews} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux';
+import { get } from "../../helpers"
 
 class Header extends Component {
 	render() {
@@ -20,9 +21,10 @@ class Header extends Component {
 			        <div
 			            className="collapse navbar-collapse" id="navcol-1">
 			            <ul className="nav navbar-nav">
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>{pages.start.fields.menu_name}</NavLink></li>
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>{pages.reviews.fields.menu_name}</NavLink></li>
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>{pages.news.fields.menu_name}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>{get(pages, "start.fields.menu_name")}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>{get(pages, "reviews.fields.menu_name")}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/faq'>{get(pages, "faq.fields.menu_name")}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>{get(pages, "news.fields.menu_name")}</NavLink></li>
 			            </ul>
 			            { authBtns }
 			        </div>
