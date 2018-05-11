@@ -27,7 +27,8 @@ class Form extends Component {
         var replacers = {
         	valute1: data.CoinFrom.Symbol, 
         	valute2: data.CoinTo.Symbol,
-        	wallet: data.Deposit,
+        	wallet: data.Wallet,
+        	deposit: data.Deposit,
         	txid: data.ID,
         	amount: data.PlanAmount,
         	status: data.Status,
@@ -36,7 +37,6 @@ class Form extends Component {
         	rate: `1 ${data.CoinFrom.Symbol} = ${data.PlanRate} ${data.CoinTo.Symbol}`
         }
 
-        debugger;
 		
 		var contentHtml = page.content.rendered ? page.content.rendered.format(replacers) : "";
 
@@ -44,12 +44,37 @@ class Form extends Component {
 			<div className="text-center">
 				<h4 className="mt0 text-center">{page.title.rendered}</h4>
 				<div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-				Please make deposit to {data.DepositType} address: {data.Deposit} 
-				<br />
-				<img src={qrcode_url} alt="QR code" />
+
+				<table className="tx-table">
+					<tbody>
+						<tr>
+							<td className="tx-td-qr">
+								<img src={qrcode_url} alt="QR code" />
+							</td>
+							<td className="tx-td-text">
+								<div>
+									{get(page, "fields.tx_address").format(replacers)} <b>{data.Deposit}</b>
+								</div>
+								<div>
+									{get(page, "fields.tx_amount_from_request")} {data.PlanAmount} {data.CoinFrom.Symbol}
+								</div>
+								<br />
+								<div>
+									<button onClick = {this.handleClick} className="btn btn-primary">{get(page, "fields.tx_refresh_btn")} </button>	
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div className="tx-container" dangerouslySetInnerHTML={{ __html: get(page, "fields.tx_text_after_qr_code").format(replacers) }} />
+				
 			</div>
 		);
 	}
+
+    handleClick = ev => {
+    	this.props.getTransactionStatus(this.props.data.ID)
+    }
 }
 
 export default Form

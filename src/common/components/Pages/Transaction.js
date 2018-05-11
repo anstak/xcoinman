@@ -44,7 +44,7 @@ class Transaction extends Component {
 			<div className="container">
 				<br />
 				<br />
-				<TransactionForm data={transactionData} page={page} />
+				<TransactionForm data={transactionData} page={page} getTransactionStatus = {this.props.getTransactionStatus} />
 			</div>
 		);
 	}
