@@ -5,11 +5,13 @@ import {redirectToTransactionFinished, getTransactionStatus} from '../../actions
 import Loader from '../Shared/Loader'
 import ImagesDirection from '../Exchange/ImagesDirection'
 import TransactionForm from '../Transaction/Form'
+import pageDataContent from '../../decorators/pageDataContent';
 
 class Transaction extends Component {
 
 	static propTypes = {
 		// from connect
+		page: PropTypes.object,
         transaction: PropTypes.shape({
 	        loaded_transaction: PropTypes.bool.isRequired,
 	        loading_transaction: PropTypes.bool.isRequired,
@@ -28,7 +30,8 @@ class Transaction extends Component {
     }
 
 	render() {
-		const {transactionData, loading_transaction, loaded_transaction} = this.props.transaction
+		const {page, transaction: {transactionData, loading_transaction, loaded_transaction}} = this.props
+
 		if (!loaded_transaction || loading_transaction) {
 			return (
 				<div className="container ovh">
@@ -36,13 +39,12 @@ class Transaction extends Component {
 				</div>
 			)
 		}
-		const {CoinFrom: cryptoFrom, CoinTo: cryptoTo} = transactionData
-		
+
 		return (
 			<div className="container">
 				<br />
-				<ImagesDirection cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} />
-				<TransactionForm data={transactionData} />
+				<br />
+				<TransactionForm data={transactionData} page={page} />
 			</div>
 		);
 	}
@@ -53,4 +55,4 @@ export default connect((state) => {
 		transactionDataFromDetails: state.exchangeInfo.transactionData,
 		transaction: state.transaction
 	}
-}, { redirectToTransactionFinished, getTransactionStatus })(Transaction)
+}, { redirectToTransactionFinished, getTransactionStatus })(pageDataContent(Transaction))
