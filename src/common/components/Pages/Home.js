@@ -20,11 +20,11 @@ class Home extends Component {
 			<div>
 			    <div className="container">
 			        <div className="row main-info-flex">
-			            <div className="col-md-7 col-md-offset-0 exchange-info">
-			            	<PaymentSystems page={page} />
-			            </div>
-			            <div className="col-md-5 details-info">
+			            <div className="col-md-5 col-md-push-7 details-info">
 			            	<DetailsExchange />
+			            </div>
+			            <div className="col-md-7 col-md-pull-5 col-md-offset-0 exchange-info">
+			            	<PaymentSystems page={page} />
 			            </div>
 			        </div>
 			        <div className="row">

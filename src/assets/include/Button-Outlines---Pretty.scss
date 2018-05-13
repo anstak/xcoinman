@@ -39,7 +39,6 @@
   border-radius:0 0 5px 5px;
 }
 
-
 .btn-active, .btn-active:hover, .btn-active:focus, .btn-active:active {
   background: #f9433d !important;
   color: #fff !important;
@@ -48,4 +47,5 @@
 
 .main-info-flex .btn {
   outline: none !important;
+  white-space: normal;
 }

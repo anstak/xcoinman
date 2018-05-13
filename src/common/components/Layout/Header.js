@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { get } from "../../helpers"
+import { Navbar } from 'react-bootstrap';
 
 class Header extends Component {
 	render() {
@@ -13,13 +14,13 @@ class Header extends Component {
 	 //        <button className="btn btn-primary navbar-btn navbar-right" type="button"><strong>SIGN IN</strong></button>
 		// ]
 		return (
-			<nav className="navbar navbar-default">
+			<Navbar collapseOnSelect>
 			    <div className="container">
 			        <div className="navbar-header">
 			        	<NavLink activeStyle={{color: '#336699'}} className="navbar-brand" exact to='/'>XcoinMAN</NavLink>
-			        	<button className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span></button></div>
-			        <div
-			            className="collapse navbar-collapse" id="navcol-1">
+			        	<Navbar.Toggle />
+		        	</div>
+			        <Navbar.Collapse>
 			            <ul className="nav navbar-nav">
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>{get(pages, "start.fields.menu_name")}</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>{get(pages, "reviews.fields.menu_name")}</NavLink></li>
@@ -27,9 +28,9 @@ class Header extends Component {
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>{get(pages, "news.fields.menu_name")}</NavLink></li>
 			            </ul>
 			            { authBtns }
-			        </div>
+			        </Navbar.Collapse>
 			    </div>
-			</nav>
+			</Navbar>
 		);
 	}
 }
