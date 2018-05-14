@@ -32,7 +32,7 @@ class Home extends Component {
 			                <div className="page-header">
 			                    <h3>{page.fields.home_reviews_title}</h3>
 			                </div>
-		                	<Comments limit={5} />
+		                	<Comments limit={3} />
 		                	<br />
 		                	<NavLink className="btn btn-primary" to='/reviews'>{page.fields.home_reviews_read_all}</NavLink>
 			            </div>

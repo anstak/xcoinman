@@ -17,9 +17,9 @@ class Comments extends Component {
     }
 
 	render() {
-		const {comments} = this.props
+		const {comments, limit} = this.props
 
-		const commentsHtml = comments.map((comment) => {
+		const commentsHtml = comments.filter((s,i) => !limit || i < limit).map((comment) => {
 			return <Comment key={comment.id} data={comment} />
 		})
 

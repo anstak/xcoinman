@@ -17,12 +17,12 @@ class Header extends Component {
 			<Navbar collapseOnSelect>
 			    <div className="container">
 			        <div className="navbar-header">
-			        	<NavLink activeStyle={{color: '#336699'}} className="navbar-brand" exact to='/'>XcoinMAN</NavLink>
+			        	<NavLink activeStyle={{color: '#336699'}} className="navbar-brand" exact to='/'>XCoinMan</NavLink>
 			        	<Navbar.Toggle />
 		        	</div>
 			        <Navbar.Collapse>
 			            <ul className="nav navbar-nav">
-			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/start'>{get(pages, "start.fields.menu_name")}</NavLink></li>
+			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/about'>{get(pages, "about.fields.menu_name")}</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/reviews'>{get(pages, "reviews.fields.menu_name")}</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/faq'>{get(pages, "faq.fields.menu_name")}</NavLink></li>
 			                <li role="presentation"><NavLink activeStyle={{color: '#336699'}} to='/news'>{get(pages, "news.fields.menu_name")}</NavLink></li>

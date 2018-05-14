@@ -54,21 +54,16 @@ class FormExchange extends Component {
                                 <label className="control-label" htmlFor="Wallet">
                                     {page.fields.form_address_to_receive ? page.fields.form_address_to_receive.format(valuteReplacers) : ""}
                                 </label>
-                                <input className="form-control" value = {this.state.Wallet} onChange = {this.handleChange} name="Wallet" type="text" placeholder={page.fields.form_address_to_receive_placeholder} />
+                                <input className="form-control" value = {this.state.Wallet} onChange = {this.handleChange} name="Wallet" type="text" placeholder={page.fields.form_address_to_receive_placeholder ? page.fields.form_address_to_receive_placeholder.format(valuteReplacers) : "" } />
                             </div>
                             <div className={this.getClassName("RefundWallet")} >
                                 <label className="control-label" htmlFor="RefundWallet">
                                     {page.fields.form_address_from_send ? page.fields.form_address_from_send.format(valuteReplacers) : ""}
                                 </label>
-                                <input className="form-control" value = {this.state.RefundWallet} onChange = {this.handleChange} name="RefundWallet" type="text" placeholder={page.fields.form_address_from_send_placeholder} />
+                                <input className="form-control" value = {this.state.RefundWallet} onChange = {this.handleChange} name="RefundWallet" type="text" placeholder={page.fields.form_address_from_send_placeholder ? page.fields.form_address_from_send_placeholder.format(valuteReplacers) : ""} />
                             </div>
                             <div className={this.getClassName("AgreeRules")}>
-                                <div className="checkbox">
-                                    <label className="control-label">
-                                        <input type="checkbox" value = {this.state.AgreeRules} onChange = {this.handleChange} name="AgreeRules" />
-                                        {page.fields.form_rules}
-                                    </label>
-                               </div>
+                                <div dangerouslySetInnerHTML={{ __html: page.fields.form_rules }} />
                             </div>
                         </div>
 
@@ -80,7 +75,6 @@ class FormExchange extends Component {
                             </div>
                         </CSSTransition>   
                         
-                        <br /> 
                         <button className="btn btn-primary" type="submit">{page.fields.form_make_exchange_btn}</button>	
                     </fieldset>
                 </form>
@@ -125,7 +119,7 @@ class FormExchange extends Component {
             Email: Email.length < 5,
             Wallet: Wallet.length < 5,
             RefundWallet: RefundWallet.length < 5,
-            AgreeRules: !AgreeRules
+            //AgreeRules: !AgreeRules
         }
         
         this.setState({Errors: _Errors});

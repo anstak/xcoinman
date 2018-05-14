@@ -50,7 +50,7 @@ var pageDataDecorator = function(OriginalComponent) {
             return (
                 <div>
                     <Helmet>
-                        <title>{page.fields.seo_title || "XcoinMAN"}</title>
+                        <title>{page.fields.seo_title || "XCoinMan"}</title>
                         <meta name="description" content={page.fields.seo_description || "Crypto changer"} />
                     </Helmet>                
                     <OriginalComponent {...this.props} page={page} />

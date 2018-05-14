@@ -18,9 +18,9 @@ class News extends Component {
     }
 
 	render() {
-		const {news, type} = this.props
+		const {news, type, limit} = this.props
 
-		const newsHtml = news.map((single) => {
+		const newsHtml = news.filter((s,i) => !limit || i < limit).map((single) => {
 			return <Single key={single.id} data={single} type={type} />
 		})
 

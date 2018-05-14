@@ -49,10 +49,10 @@ class PaymentSystemsList extends Component {
 		const {list, type} = this.props
 
 		const paymentSystems = list.map(paymentSystem => {
-			''
+			const picname = paymentSystem.imageSmall.match(/([^/]+)(?=\.\w+$)/)[0]
 			return (
 	        	<button className={this.getClassName(paymentSystem.Symbol)} disabled={this.getDisabled(paymentSystem.Symbol)} type="button" key={paymentSystem.Symbol} onClick={this.toggleClick(paymentSystem.Symbol, type)}>
-	        		<span className={"coin_icon coin_" + paymentSystem.imageSmall.match(/([^/]+)(?=\.\w+$)/)[0]} />
+	        		<span className={"coin_icon coin_" + picname} />
 	        		{paymentSystem.Name}
 	        	</button>
 			)
