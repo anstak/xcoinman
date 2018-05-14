@@ -1,4 +1,5 @@
 module.exports = {
 	server: "http://128.0.0.1/",
-	wordpress: "https://example.com/"
+	wordpress: "https://example.com/",
+	metrika: 11111111
 }
