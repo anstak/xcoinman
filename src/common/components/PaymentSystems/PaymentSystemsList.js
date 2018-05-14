@@ -16,6 +16,10 @@ class PaymentSystemsList extends Component {
         selected: PropTypes.string
 	}
 
+    state = {
+        intervalId: 0
+    };	
+
     componentDidMount() {
         const {selected, type, loadedPaymentSystems} = this.props
 		if (selected && loadedPaymentSystems) {
@@ -61,6 +65,18 @@ class PaymentSystemsList extends Component {
 		);
 	}
 
+	  scrollStep() {
+	    if (window.pageYOffset === 0) {
+	        clearInterval(this.state.intervalId);
+	    }
+	    window.scroll(0, window.pageYOffset - 40);
+	  }
+	  
+	  scrollToTop() {
+	    let intervalId = setInterval(this.scrollStep.bind(this), 10);
+	    this.setState({ intervalId: intervalId });
+	  }
+
 	toggleClick = (symbol, type) => ev =>  {
 		var selected = {
 			from: this.props.selected_from,
@@ -69,6 +85,7 @@ class PaymentSystemsList extends Component {
 		selected[type] = symbol
 		if (selected.from && selected.to) {
 			this.props.history.push(selected.from.toLowerCase() + "-to-" + selected.to.toLowerCase())
+			this.scrollToTop()
 		} else {
 			this.props.toggleActiveCrypto(symbol, type)
 		}
@@ -87,6 +104,7 @@ class PaymentSystemsList extends Component {
 		return paymentSystemID === this.props["selected_" + anti_type]
 	}
 }
+
 
 export default connect((state) => {
 	return {

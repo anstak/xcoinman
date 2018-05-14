@@ -148,3 +148,24 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   text-align: left;
   padding: 5px 15px;
 }
+
+
+@media (max-width: 991px) {
+  .ps-col-left {
+    padding-right: 3px;
+    padding-left: 10px;
+  }
+  .ps-col-right {
+    padding-right: 10px;
+    padding-left: 3px;
+  }
+}
+
+@media (min-width: 991px) {
+  .ps-col-left {
+    padding-right: 8px;
+  }
+  .ps-col-right {
+    padding-left: 8px;
+  }
+}

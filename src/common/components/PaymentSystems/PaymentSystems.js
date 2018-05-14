@@ -45,7 +45,7 @@ class PaymentSystems extends Component {
 		} else {
 			return (
 				<div className="row">
-			        <div className="col-xs-6">
+			        <div className="col-xs-6 ps-col-left">
 			            <h4 className="mt0">{page.fields.home_send}</h4>
 			            <Amount type="from" placeholder={page.fields.home_amount_to_send} />
 			            <h5 className="choose-payment-system">{page.fields.home_choose_ps}</h5>
@@ -53,7 +53,7 @@ class PaymentSystems extends Component {
 			            	<PaymentSystemsList list={paymentSystems} type="from" selected={currencyFrom} history={history} />
 			        	</div>
 			        </div>
-			        <div className="col-xs-6">
+			        <div className="col-xs-6 ps-col-right">
 			            <h4 className="mt0">{page.fields.home_receive}</h4>
 			            <Amount type="to" placeholder={page.fields.home_amount_to_receive} />
 			            <h5 className="choose-payment-system">{page.fields.home_choose_ps}</h5>
