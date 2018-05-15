@@ -36,8 +36,8 @@ class FormExchange extends Component {
             loader = <div className="loader-abs"><Loader /></div>
         }
 
-        if (transactionData.ID) {
-            return <Redirect push to={"/txid/" + transactionData.ID} />
+        if (transactionData.HRID) {
+            return <Redirect push to={"/txid/" + transactionData.HRID} />
         }
 
 		return (

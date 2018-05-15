@@ -13,7 +13,7 @@ export function redirectToTransactionFinished(transactionData) {
 export function getTransactionStatus(id) {
   return dispatch => {
     dispatch({ type: GET_TRANSACTION_STATUS + START })
-    const params = querystring.stringify({ID: id});
+    const params = querystring.stringify({HRID: id});
     return axios.post(
         '/api/CryptoCurrencies/shapeshift-status',
         params

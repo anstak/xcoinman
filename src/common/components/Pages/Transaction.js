@@ -22,7 +22,7 @@ class Transaction extends Component {
 
     componentDidMount() {
         const {match: {params: { id }}, transactionDataFromDetails} = this.props
-        if (transactionDataFromDetails.ID) {
+        if (transactionDataFromDetails.HRID) {
            	this.props.redirectToTransactionFinished(transactionDataFromDetails)
         } else {
 			this.props.getTransactionStatus(id)
