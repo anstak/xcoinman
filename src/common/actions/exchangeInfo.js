@@ -47,6 +47,12 @@ export function loadCryptoPair(ratePair) {
   }
 }
 
+export function clearRates(ratePair) {
+  return dispatch => {
+    dispatch({ type: LOAD_CRYPTO_PAIR + FAIL })
+  }
+}
+
 export function createTransaction(transaction) {
   return dispatch => {
     dispatch({ type: CREATE_TRANSACTION + START })

@@ -39,6 +39,9 @@ export default function(state = initialState, action = {}) {
     case LOAD_CRYPTO_PAIR + FAIL:
       return {
         ...state,
+        rate: {},
+        amount_from: null,
+        amount_to: null,
         calculatingType: null,
         errorMessage
       }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import {loadCryptoPair} from '../../actions/exchangeInfo'
+import {loadCryptoPair, clearRates} from '../../actions/exchangeInfo'
 import FormExchange from './FormExchange'
 import ImagesDirection from './ImagesDirection'
 import {Helmet} from "react-helmet";
@@ -32,14 +32,8 @@ class DetailsExchange extends Component {
 	}
 
 
-    componentWillReceiveProps(nextProps) {
-		const {exchangeInfo: {selected_from, selected_to, loading_pair}, paymentSystemsMap, loadCryptoPair} = nextProps
-
-		if (loading_pair) return false
-
-       	if (selected_from === this.props.exchangeInfo.selected_from &&
-        	selected_to === this.props.exchangeInfo.selected_to) return false
-
+    componentWillMount() {
+    	const {exchangeInfo: {selected_from, selected_to}, paymentSystemsMap, loadCryptoPair} = this.props
         if (selected_from && selected_to) {
 			var cryptoFrom = paymentSystemsMap[selected_from]
 			var cryptoTo = paymentSystemsMap[selected_to]
@@ -47,9 +41,26 @@ class DetailsExchange extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+		const {exchangeInfo: {selected_from, selected_to, loading_pair}, paymentSystemsMap, loadCryptoPair} = nextProps
+
+		if (loading_pair) return false
+
+       	if (selected_from === this.props.exchangeInfo.selected_from &&
+        	selected_to === this.props.exchangeInfo.selected_to) return false
+        if (selected_from && selected_to) {
+			var cryptoFrom = paymentSystemsMap[selected_from]
+			var cryptoTo = paymentSystemsMap[selected_to]
+        	loadCryptoPair(cryptoFrom.Symbol + "_" + cryptoTo.Symbol)
+        }
+
+        if (!selected_from && !selected_to) {
+			this.props.clearRates()
+        }
+    }
+
     shouldComponentUpdate(nextProps, nextState) {
         const {exchangeInfo} = nextProps
-
         return (
             !_.isEqual(exchangeInfo, this.props.exchangeInfo)
     	)
@@ -116,4 +127,4 @@ export default connect((state) => {
         pages: state.wordpress.pages,
         loaded_pages: state.wordpress.loaded_pages		
 	}
-}, { loadCryptoPair })(DetailsExchange)
+}, { loadCryptoPair, clearRates })(DetailsExchange)
