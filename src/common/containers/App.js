@@ -8,7 +8,7 @@ var config = require('../../../config')
 export default class App extends Component {
   render() {
     return (
-		<div>
+		<div className="Site">
 			<Header />
 			<Main />
 			<Footer />

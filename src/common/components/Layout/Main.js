@@ -13,7 +13,7 @@ import {Route, Switch} from 'react-router-dom'
 class Main extends Component {
 	render() {
 		return (
-			<div>
+			<div className="Site-content">
 				<Switch>
 					<Route path="/(contact-us|faq|rates|terms-of-service|about)" component={Start} />
 					<Route path="/" exact component={Home} />
