@@ -39,14 +39,17 @@ var pageDataDecorator = function(OriginalComponent) {
 
         componentDidMount() {
             const {loaded_pages, loadPages} = this.props
-            if (!loaded_pages) loadPages()
+            if (!loaded_pages) {
+                loadPages()
+            } else {
+                window.scrollTo(0, 0);
+            }
         }
 
         render() {
             const {pages, location } = this.props
             const pageName = location.pathname === "/" || /\/(\w+)-to-(\w+)/.test(location.pathname) ? "home" : location.pathname.split("/")[1]
             var page = pages[pageName] || emptyPage
-
             return (
                 <div>
                     <Helmet>

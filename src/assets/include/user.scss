@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .mt0 {
-  margin-top:0;
+  margin-top:0 !important;
 }
 
 .footer-logo {
@@ -167,5 +167,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
   .ps-col-right {
     padding-left: 8px;
+  }
+}
+
+.container h1 {
+  margin: 30px 0 30px;
+}
+
+.inform-h1 {
+  &.smaller {
+    font-size: 26px;
   }
 }

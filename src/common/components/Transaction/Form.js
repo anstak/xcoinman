@@ -29,7 +29,7 @@ class Form extends Component {
         	valute2: data.CoinTo.Symbol,
         	wallet: data.Wallet,
         	deposit: data.Deposit,
-        	txid: data.HRID,
+        	txid: data.ID,
         	amount: data.PlanAmount,
         	status: data.Status,
         	created: data.CreateDate,
@@ -73,7 +73,7 @@ class Form extends Component {
 	}
 
     handleClick = ev => {
-    	this.props.getTransactionStatus(this.props.data.HRID)
+    	this.props.getTransactionStatus(this.props.data.ID)
     }
 }
 

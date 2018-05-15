@@ -92,7 +92,7 @@ class DetailsExchange extends Component {
 		if (!cryptoFrom || !cryptoTo) {
 			return (
 				<div>
-					<h4 className="mt0 text-center"> { page.title.rendered } </h4>
+					<h1 className="mt0 inform-h1"> { page.title.rendered } </h1>
 					<div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
 				</div>
 			)
@@ -110,7 +110,7 @@ class DetailsExchange extends Component {
 		return (
 			<div>
 				{helmet}
-				<h4 className="mt0 text-center">{page.title.rendered ? page.title.rendered.format(valuteReplacers) : ""} </h4>
+				<h1 className="mt0 inform-h1 smaller">{page.title.rendered ? page.title.rendered.format(valuteReplacers) : ""} </h1>
                 <FormExchange cryptoTo={cryptoTo} cryptoFrom={cryptoFrom} exchangeInfo={this.props.exchangeInfo} page={page} />
                 <br />
                 <div dangerouslySetInnerHTML={{ __html: page.content.rendered ? page.content.rendered.format(valuteReplacers) : "" }} />
