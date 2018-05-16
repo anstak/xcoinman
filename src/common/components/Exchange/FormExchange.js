@@ -99,6 +99,9 @@ class FormExchange extends Component {
 
         if (!this.checkValidation()) return false
 
+        // язык En - 1,
+        // язык Ru - 2
+
         var transaction = {
         	CoinToID: cryptoTo.ID,
         	CoinFromID: cryptoFrom.ID,
@@ -106,7 +109,8 @@ class FormExchange extends Component {
         	RefundWallet,
             Email,
             PlanAmount: amount_from*1,
-            PlanRate: rate.rate
+            PlanRate: rate.rate,
+            Language: 2
         }
 
         this.props.createTransaction(transaction)
