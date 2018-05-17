@@ -37,7 +37,7 @@ class DetailsExchange extends Component {
         if (selected_from && selected_to) {
 			var cryptoFrom = paymentSystemsMap[selected_from]
 			var cryptoTo = paymentSystemsMap[selected_to]
-        	loadCryptoPair(cryptoFrom.Symbol + "_" + cryptoTo.Symbol)
+        	loadCryptoPair(cryptoFrom.Symbol + "_" + cryptoTo.Symbol, "shapeshift")
         }
     }
 
@@ -51,7 +51,7 @@ class DetailsExchange extends Component {
         if (selected_from && selected_to) {
 			var cryptoFrom = paymentSystemsMap[selected_from]
 			var cryptoTo = paymentSystemsMap[selected_to]
-        	loadCryptoPair(cryptoFrom.Symbol + "_" + cryptoTo.Symbol)
+        	loadCryptoPair(cryptoFrom.Symbol + "_" + cryptoTo.Symbol, "shapeshift")
         }
 
         if (!selected_from && !selected_to) {

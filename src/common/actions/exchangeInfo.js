@@ -16,13 +16,13 @@ export function setAmountCrypto(amount, type, calculating) {
     }
 }
 
-export function loadCryptoPair(ratePair) {
+export function loadCryptoPair(ratePair, exchangeName) {
   return dispatch => {
     dispatch({ type: LOAD_CRYPTO_PAIR + START })
 
     return axios.post(
         '/api/CryptoCurrencies/rate',
-        querystring.stringify({ratePair})
+        querystring.stringify({ratePair, exchangeName})
     )
     .then(function (response) {
       const {Data, Errors} = response.data
