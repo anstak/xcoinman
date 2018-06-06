@@ -21,3 +21,14 @@ export function get(o, p) {
     	return ((xs && xs[x]) ? xs[x] : null)
     }, o)
 }
+
+export const TXStatusEnum = {
+    1:  "created",
+    2:  "no_deposits",
+    4:  "received",
+    8:  "complete",
+    16: "failed",
+    32: "error",
+    64: "expired",
+    128: "returned"
+}
