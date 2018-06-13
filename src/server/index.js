@@ -59,9 +59,11 @@ server.get("/rates.xml", (req, res) => {
             { in: 1 },
             { out: (pair.rate*1).toFixed(8) },
             { amount: pair.limit.toFixed(8) },
-            { minfee: pair.minerFee.toFixed(8) },
-            { minamount: pair.min.toFixed(8) },
-            { maxamount: pair.maxLimit.toFixed(8) }
+            { minfee: pair.minerFee.toFixed(8) + " " + symbols[0] },
+            { minamount: pair.min.toFixed(8) + " " + symbols[1] },
+            { maxamount: pair.maxLimit.toFixed(8) + " " + symbols[1] },
+            { fromfee: (0).toFixed(8) + " " + symbols[0] },
+            { tofee: (0).toFixed(8) + " " + symbols[1] }         
           ]
         })
       })
