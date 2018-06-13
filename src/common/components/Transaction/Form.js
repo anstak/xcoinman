@@ -64,22 +64,24 @@ class Form extends Component {
 								<img src={qrcode_url} alt="QR code" />
 							</td>
 							<td className="tx-td-text">
+								<div dangerouslySetInnerHTML={{ __html: get(page, "fields.tx_you_need_send").format(replacers) }} />
 								<div>
 									{get(page, "fields.tx_address").format(replacers)} <b>{data.Deposit}</b>
 								</div>
 								<div>
-									{get(page, "fields.tx_amount_from_request")} {data.PlanAmount} {data.CoinFrom.Symbol}
+									{get(page, "fields.tx_amount_from_request")} <b>{data.PlanAmount}</b> {data.CoinFrom.Symbol}
 								</div>
-								<br />
-								<div>
-									<button onClick = {this.handleClick} className="btn btn-primary">{get(page, "fields.tx_refresh_btn")} </button>	
-								</div>
+								<div dangerouslySetInnerHTML={{ __html: get(page, "fields.tx_you_will_get_after_sending").format(replacers) }} />
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<div className="tx-container" dangerouslySetInnerHTML={{ __html: get(page, "fields.tx_text_after_qr_code").format(replacers) }} />
 				
+				<br />
+				<div>
+					<button onClick = {this.handleClick} className="btn btn-primary">{get(page, "fields.tx_refresh_btn")} </button>	
+				</div>
 			</div>
 		);
 	}
@@ -95,9 +97,7 @@ class Form extends Component {
 		return (
 			<div>
 				<h3 className="mt0 text-center">{page.title.rendered}</h3>
-				<br />
-				<br />
-				<br />
+				<div className="tx-arrow">&rarr;</div>
 				<div className="row">
 					<div className="col-md-4 overflow-wrap">
 						<h4>{get(page, "fields.tx_you_give")}</h4>
@@ -111,12 +111,8 @@ class Form extends Component {
 							<tbody>
 								<tr>
 									<td>
-										<div className="tx-arrow">&rarr;</div>
-										<p>
-											<strong>{get(page, "fields.tx_status")}</strong>&nbsp;
-											{get(page, "fields.tx_status_" + status)}
-										</p>
-										<p>
+										<div dangerouslySetInnerHTML={{ __html: get(page, "fields.tx_status_" + status).format(replacers) }} />
+										<p style={{borderTop: "1px solid #ccc", paddingTop: "10px"}}>
 											{get(page, "fields.tx_date_created")}&nbsp;
 											<Moment format="DD.MM.YYYY hh:mm">
 												{replacers.created}
@@ -144,7 +140,7 @@ class Form extends Component {
 	}
 
     handleClick = ev => {
-    	this.props.getTransactionStatus(this.props.data.ID)
+    	this.props.getTransactionStatus(this.props.data.HRID)
     }
 }
 

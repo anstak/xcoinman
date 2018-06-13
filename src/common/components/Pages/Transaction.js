@@ -39,7 +39,6 @@ class Transaction extends Component {
 				</div>
 			)
 		}
-
 		return (
 			<div className="container">
 				<br />
